@@ -1,0 +1,9 @@
+.node {
+    width: 20px;
+    height: 20px;
+    outline: 1px solid black;
+    float: left;
+    font-size: 5px;
+
+    padding: 1px;
+}
