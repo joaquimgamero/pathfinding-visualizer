@@ -1,2 +1,3 @@
-<div class="node">
+<div class="node" [ngClass]="{ 'start-node' : node.isStartNode, 'end-node' : node.isEndNode }">
+    {{node.x}}, {{node.y}}
 </div>

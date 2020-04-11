@@ -1,4 +1,6 @@
 <!-- Rows -->
-<div *ngFor="let item of [].constructor(height); let i = index" class="row">
-    <node *ngFor="let item of [].constructor(width); let j = index" [x]="i + 1" [y]="j + 1"></node>
+<div *ngFor="let node of [].constructor(height); let i = index" class="row">
+    <node *ngFor="let node of getNodesInRow(i)" [node]="node"></node>
 </div>
+
+<button (click)="randomStartEndNodes()">Generate random start/end nodes!</button>

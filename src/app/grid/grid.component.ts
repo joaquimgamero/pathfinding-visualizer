@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NodeComponent } from './node/node.component';
+import { GridService } from '../services/grid.service';
+import { Node } from '../models/node';
 
 @Component({
   selector: 'grid',
@@ -10,18 +12,22 @@ export class GridComponent implements OnInit {
   @Input() width: number;
   @Input() height: number;
 
-  nodes: Array<NodeComponent> = new Array();
 
-  constructor() { }
+  constructor(private gridService: GridService) { }
 
   ngOnInit(): void {
-    // Rows
-    for (let i = 0; i < this.width; i++) {
-      // Cols
-      for (let j = 0; j < this.height; j++) {
-        this.nodes[i] = new NodeComponent();
-      }
-    }
+    this.gridService.initializeGrid(this.width, this.height);
   }
 
+  public getNodesInRow(row: number): Array<Node> {
+    return this.gridService.grid[row];
+  }
+
+  public get nodes(): Array<Array<Node>> {
+    return this.gridService.grid;
+  }
+
+  public randomStartEndNodes() {
+    this.gridService.randomStartEndNodes();
+  }
 }
