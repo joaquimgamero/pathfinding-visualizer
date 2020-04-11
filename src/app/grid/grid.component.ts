@@ -26,4 +26,8 @@ export class GridComponent implements OnInit {
   public get nodes(): Array<Array<Node>> {
     return this.gridService.grid;
   }
+
+  public randomStartEndNodes() {
+    this.gridService.randomStartEndNodes();
+  }
 }
