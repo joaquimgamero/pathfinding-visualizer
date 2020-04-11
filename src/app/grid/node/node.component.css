@@ -1,9 +1,17 @@
 .node {
     width: 20px;
     height: 20px;
-    outline: 1px solid black;
+    border: 0.5px solid black;
     float: left;
     font-size: 5px;
 
     padding: 1px;
+}
+
+.start-node {
+    background-color: red;
+}
+
+.end-node {
+    background-color: royalblue;
 }
