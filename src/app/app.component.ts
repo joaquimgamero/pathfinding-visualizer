@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GridService } from './services/grid.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Pathfinding Algorithms Visualizer';
+
+  constructor(private gridService: GridService) { }
+
+  public randomStartEndNodes() {
+    this.gridService.randomStartEndNodes();
+  }
+
+  public visualizeDijkstra() {
+    this.gridService.visualizeDijkstra();
+  }
 }

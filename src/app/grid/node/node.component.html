@@ -1,3 +1,4 @@
-<div class="node" [ngClass]="{ 'start-node' : node.isStartNode, 'end-node' : node.isEndNode }">
+<div class="node"
+    [ngClass]="{ 'start-node' : node.isStartNode, 'end-node' : node.isEndNode, 'has-been-checked' : node.markAsChecked }">
     <!-- {{node.x}}, {{node.y}} -->
 </div>
