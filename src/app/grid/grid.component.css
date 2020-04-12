@@ -3,3 +3,8 @@
     margin: 0;
     display: flex;
 }
+
+.grid-wrapper {
+    border: 0.5px solid lightskyblue;
+    width: fit-content;
+}
