@@ -11,8 +11,8 @@ export class AppComponent {
 
   constructor(private gridService: GridService) { }
 
-  public randomStartEndNodes() {
-    this.gridService.randomStartEndNodes();
+  public clearAndReset() {
+    this.gridService.clearAndReset();
   }
 
   public visualizeDijkstra() {

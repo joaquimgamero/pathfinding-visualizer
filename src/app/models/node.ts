@@ -24,6 +24,8 @@ export class Node {
         this.hasBeenChecked = false;
         this.isRoute = false;
         this.distance = Infinity;
+        this.previousNode = null;
+        this.isRoute = false;
     }
 
     get isStartNode(): boolean {

@@ -63,8 +63,8 @@ export class GridService {
     this.currentFinishNodePosition.y = y;
   }
 
-  public randomStartEndNodes() {
-    this.initializeGrid(this.width, this.height);
+  public clearAndReset() {
+    this.clearGrid();
     this.createStartNode(Math.floor((Math.random() * this.height) + 1), Math.floor((Math.random() * this.width) + 1));
     this.createFinishNode(Math.floor((Math.random() * this.height) + 1), Math.floor((Math.random() * this.width) + 1));
   }
