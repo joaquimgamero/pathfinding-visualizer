@@ -7,6 +7,7 @@ export class Node {
     public distance: number;
     public hasBeenChecked: boolean;
     public previousNode: Node;
+    public isRoute: boolean;
 
     constructor(x: number, y: number) {
         this.x = x;
@@ -15,6 +16,14 @@ export class Node {
         this.distance = Infinity;
         this.hasBeenChecked = false;
         this.previousNode = null;
+        this.isRoute = false;
+    }
+
+    public reset() {
+        this.type = NodeType.Empty;
+        this.hasBeenChecked = false;
+        this.isRoute = false;
+        this.distance = Infinity;
     }
 
     get isStartNode(): boolean {

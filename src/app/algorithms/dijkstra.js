@@ -1,4 +1,4 @@
-export function dijkstra(grid, startNode, finishNode) {
+export function computeDijkstra(grid, startNode, finishNode) {
     console.log("Computing Dijkstra...");
 
     if (!grid || !startNode || !finishNode || startNode == finishNode) {
@@ -23,11 +23,28 @@ export function dijkstra(grid, startNode, finishNode) {
         checkedNodes.push(closestNode);
 
         if (isSameNode(closestNode, finishNode)) {
+            checkedNodes.forEach(node => {
+                node.hasBeenChecked = false;
+            });
             return checkedNodes;
         }
 
         updateUnvisitedNeighbors(closestNode, grid);
     }
+}
+
+// Backtracks from the finishNode to find the shortest path.
+// Only works when called *after* the dijkstra method above.
+export function getDijkstraShortestPath(finishNode) {
+    const nodesInShortestPathOrder = [];
+    let currentNode = finishNode;
+
+    while (currentNode != null) {
+        nodesInShortestPathOrder.unshift(currentNode);
+        currentNode = currentNode.previousNode;
+    }
+
+    return nodesInShortestPathOrder;
 }
 
 function getAllNodes(grid) {

@@ -19,7 +19,14 @@
 
 .has-been-checked {
     background-color: paleturquoise;
-    -webkit-transition: background-color 1000ms linear;
-    -ms-transition: background-color 1000ms linear;
-    transition: background-color 1000ms linear;
+    -webkit-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+}
+
+.is-route {
+    background-color: yellow;
+    -webkit-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
 }
