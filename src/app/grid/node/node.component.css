@@ -1,7 +1,8 @@
 .node {
     width: 20px;
     height: 20px;
-    border: 0.5px solid lightskyblue;
+    border: 0.5px solid;
+    border-color: var(--grid-color);
     float: left;
     font-size: 5px;
 
@@ -9,9 +10,23 @@
 }
 
 .start-node {
-    background-color: red;
+    background-color: royalblue;
 }
 
 .end-node {
-    background-color: royalblue;
+    background-color: springgreen;
+}
+
+.has-been-checked {
+    background-color: paleturquoise;
+    -webkit-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+}
+
+.is-route {
+    background-color: yellow;
+    -webkit-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
 }

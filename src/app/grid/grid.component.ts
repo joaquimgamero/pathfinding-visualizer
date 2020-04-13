@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NodeComponent } from './node/node.component';
 import { GridService } from '../services/grid.service';
 import { Node } from '../models/node';
 
@@ -25,9 +24,5 @@ export class GridComponent implements OnInit {
 
   public get nodes(): Array<Array<Node>> {
     return this.gridService.grid;
-  }
-
-  public randomStartEndNodes() {
-    this.gridService.randomStartEndNodes();
   }
 }
