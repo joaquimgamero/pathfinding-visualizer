@@ -9,12 +9,25 @@
     padding: 1px;
 }
 
-.start-node {
-    background-color: royalblue;
+.start-node-icon {
+    border: solid royalblue;
+    border-width: 0 5px 5px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-top: 3px;
+    width: 5px;
+    height: 5px;
+    padding: 2px;
 }
 
-.end-node {
-    background-color: springgreen;
+.end-node-icon {
+    border: solid 3px springgreen;
+    display: inline-block;
+    margin-top: 2px;
+    width: 6px;
+    height: 6px;
+    padding: 2px;
+    margin-left: 2px;
 }
 
 .has-been-checked {
@@ -24,9 +37,36 @@
     transition: background-color 500ms linear;
 }
 
-.is-route {
+.route {
     background-color: yellow;
     -webkit-transition: background-color 500ms linear;
     -ms-transition: background-color 500ms linear;
     transition: background-color 500ms linear;
+}
+
+
+.obstacle {
+    background-color: black;
+}
+
+/* ------------ Directions ------------ */
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
 }

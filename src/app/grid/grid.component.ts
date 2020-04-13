@@ -25,4 +25,12 @@ export class GridComponent implements OnInit {
   public get nodes(): Array<Array<Node>> {
     return this.gridService.grid;
   }
+
+  public onToggleMouseState() {
+    this.gridService.mouseIsBeingPressed = !this.gridService.mouseIsBeingPressed;
+  }
+
+  public onMouseLeave() {
+    this.gridService.mouseIsBeingPressed = false;
+  }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Node } from '../models/node';
 import { NodeType } from '../enums/nodeType.enum'
 import { AlgorithmsService } from './algorithms.service';
+import { AlgorithmType } from '../enums/algorithmType.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class GridService {
   private readonly INITIAL_END_NODE_Y = 30;
 
   public grid: Array<Array<Node>> = new Array<Array<Node>>();
+  public mouseIsBeingPressed: boolean = false;
 
   private width: number;
   private height: number;
@@ -69,9 +71,10 @@ export class GridService {
     this.createFinishNode(Math.floor((Math.random() * this.height) + 1), Math.floor((Math.random() * this.width) + 1));
   }
 
-  public visualizeDijkstra() {
-    const checkedNodesInOrder: Array<Node> = this.algorithmsService.dijkstra(this.grid, this.startNode, this.finishNode);
-    this.renderAlgorithm(checkedNodesInOrder);
+  public visualizeAlgorithm(algorithmType: AlgorithmType) {
+    this.removeRoute();
+    const checkedNodesInOrder: Array<Node> = this.algorithmsService.computeAlgorithm(this.grid, this.startNode, this.finishNode, algorithmType);
+    this.renderAlgorithm(checkedNodesInOrder, algorithmType);
   }
 
   private findNode(x: number, y: number) {
@@ -86,7 +89,7 @@ export class GridService {
     return this.findNode(this.currentFinishNodePosition.x, this.currentFinishNodePosition.y);
   }
 
-  private async renderAlgorithm(checkedNodesInOrder: Array<Node>) {
+  private async renderAlgorithm(checkedNodesInOrder: Array<Node>, algorithmType: AlgorithmType) {
     for (let i = 0; i < checkedNodesInOrder.length; i++) {
       await new Promise(resolve => {
         setTimeout(() => {
@@ -99,7 +102,7 @@ export class GridService {
       });
     }
 
-    const shortestPath = this.algorithmsService.getDijkstraShortestPath(this.finishNode);
+    const shortestPath = this.algorithmsService.getShortestPath(this.finishNode, algorithmType);
     this.renderRoute(shortestPath);
   }
 
@@ -121,6 +124,14 @@ export class GridService {
     this.grid.forEach(row => {
       row.forEach(node => {
         node.reset();
+      });
+    });
+  }
+
+  private removeRoute() {
+    this.grid.forEach(row => {
+      row.forEach(node => {
+        node.removeRoute();
       });
     });
   }

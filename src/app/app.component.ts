@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GridService } from './services/grid.service';
+import { AlgorithmType } from './enums/algorithmType.enum';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent {
     this.gridService.clearAndReset();
   }
 
-  public visualizeDijkstra() {
-    this.gridService.visualizeDijkstra();
+  public visualizeSelectedAlgorithm() {
+    this.gridService.visualizeAlgorithm(AlgorithmType.Dijkstra);
   }
 }

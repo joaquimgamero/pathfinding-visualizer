@@ -28,15 +28,35 @@ export class Node {
         this.isRoute = false;
     }
 
-    get isStartNode(): boolean {
+    public removeRoute() {
+        this.isRoute = false;
+    }
+
+    public toggleType(nodeType: NodeType) {
+        switch (nodeType) {
+            case NodeType.Obstacle:
+                if (this.type != NodeType.Start && this.type != NodeType.Finish) {
+                    this.type = this.type == NodeType.Empty ? NodeType.Obstacle : NodeType.Empty;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    get isStart(): boolean {
         return this.type === NodeType.Start;
     }
 
-    get isEndNode(): boolean {
+    get isFinish(): boolean {
         return this.type === NodeType.Finish;
     }
 
+    get isObstacle(): boolean {
+        return this.type == NodeType.Obstacle;
+    }
+
     get markAsChecked(): boolean {
-        return this.type === NodeType.Empty && this.hasBeenChecked;
+        return this.hasBeenChecked;
     }
 }

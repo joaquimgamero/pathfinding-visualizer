@@ -7,15 +7,22 @@ export function computeDijkstra(grid, startNode, finishNode) {
 
     const checkedNodes = [];
     const uncheckedNodes = getAllNodes(grid);
+    startNode.hasBeenChecked = true;
 
     // Check all unvisited nodes
     while (Array.isArray(uncheckedNodes) && uncheckedNodes.length) {
         sortNodesByDistance(uncheckedNodes);
         const closestNode = uncheckedNodes.shift()
 
+        // If we find and obstacle we skip it
+        if (closestNode.isObstacle) {
+            continue;
+        }
+
         // If the closest node is at a distance of infinity,
         // we must be trapped and should therefore stop.
         if (closestNode.distance === Infinity) {
+            uncheckAllNodes(checkedNodes);
             return checkedNodes;
         }
 
@@ -23,9 +30,7 @@ export function computeDijkstra(grid, startNode, finishNode) {
         checkedNodes.push(closestNode);
 
         if (isSameNode(closestNode, finishNode)) {
-            checkedNodes.forEach(node => {
-                node.hasBeenChecked = false;
-            });
+            uncheckAllNodes(checkedNodes);
             return checkedNodes;
         }
 
@@ -99,4 +104,16 @@ function getUnvisitedNeighbors(node, grid) {
 
 function isSameNode(nodeA, nodeB) {
     return nodeA.x == nodeB.x && nodeA.y == nodeB.y;
+}
+
+// This function is necessary for this Angular implementation,
+// otherwise when we return the node list the final state is 
+// visualized instantly and therefore no animation is possible.
+// https://angular.io/guide/architecture#templates-directives-and-data-binding
+function uncheckAllNodes(nodes) {
+    nodes.forEach(node => {
+        if (!node.isStart) {
+            node.hasBeenChecked = false;
+        }
+    });
 }
