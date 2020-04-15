@@ -3,6 +3,7 @@ import { Node } from '../models/node';
 import { NodeType } from '../enums/nodeType.enum'
 import { AlgorithmsService } from './algorithms.service';
 import { AlgorithmType } from '../enums/algorithmType.enum';
+import { RenderService } from './render.service';
 
 @Injectable({
   providedIn: 'root'
@@ -71,67 +72,22 @@ export class GridService {
     this.createFinishNode(Math.floor((Math.random() * this.height) + 1), Math.floor((Math.random() * this.width) + 1));
   }
 
-  public visualizeAlgorithm(algorithmType: AlgorithmType) {
-    this.removeRoute();
-    const checkedNodesInOrder: Array<Node> = this.algorithmsService.computeAlgorithm(this.grid, this.startNode, this.finishNode, algorithmType);
-    this.renderAlgorithm(checkedNodesInOrder, algorithmType);
-  }
-
-  private findNode(x: number, y: number) {
+  public findNode(x: number, y: number) {
     return this.grid[x - 1][y - 1];
   }
 
-  private get startNode(): Node {
+  public get startNode(): Node {
     return this.findNode(this.currentStartNodePosition.x, this.currentStartNodePosition.y);
   }
 
-  private get finishNode(): Node {
+  public get finishNode(): Node {
     return this.findNode(this.currentFinishNodePosition.x, this.currentFinishNodePosition.y);
-  }
-
-  private async renderAlgorithm(checkedNodesInOrder: Array<Node>, algorithmType: AlgorithmType) {
-    for (let i = 0; i < checkedNodesInOrder.length; i++) {
-      await new Promise(resolve => {
-        setTimeout(() => {
-          const currentNode: Node = checkedNodesInOrder[i];
-          const nodeInGrid: Node = this.findNode(currentNode.x, currentNode.y);
-          nodeInGrid.hasBeenChecked = true;
-
-          resolve();
-        }, i / 100);
-      });
-    }
-
-    const shortestPath = this.algorithmsService.getShortestPath(this.finishNode, algorithmType);
-    this.renderRoute(shortestPath);
-  }
-
-  private async renderRoute(shortestPath: Array<Node>) {
-    for (let i = 0; i < shortestPath.length; i++) {
-      await new Promise(resolve => {
-        setTimeout(() => {
-          const currentNode: Node = shortestPath[i];
-          const nodeInGrid: Node = this.findNode(currentNode.x, currentNode.y);
-          nodeInGrid.isRoute = true;
-
-          resolve();
-        }, shortestPath.length / 10);
-      });
-    }
   }
 
   private clearGrid() {
     this.grid.forEach(row => {
       row.forEach(node => {
         node.reset();
-      });
-    });
-  }
-
-  private removeRoute() {
-    this.grid.forEach(row => {
-      row.forEach(node => {
-        node.removeRoute();
       });
     });
   }

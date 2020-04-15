@@ -16,6 +16,8 @@ export function computeDijkstra(grid, startNode, finishNode) {
 
         // If we find and obstacle we skip it
         if (closestNode.isObstacle) {
+            console.log("Obstacle found!");
+            console.log(closestNode);
             continue;
         }
 
