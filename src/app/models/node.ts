@@ -21,9 +21,8 @@ export class Node {
 
     public reset() {
         this.type = NodeType.Empty;
-        this.hasBeenChecked = false;
-        this.isRoute = false;
         this.distance = Infinity;
+        this.hasBeenChecked = false;
         this.previousNode = null;
         this.isRoute = false;
     }

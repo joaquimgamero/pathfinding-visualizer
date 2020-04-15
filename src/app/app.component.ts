@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { GridService } from './services/grid.service';
 import { AlgorithmType } from './enums/algorithmType.enum';
+import { RenderService } from './services/render.service';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,13 @@ import { AlgorithmType } from './enums/algorithmType.enum';
 export class AppComponent {
   title = 'Pathfinding Algorithms Visualizer';
 
-  constructor(private gridService: GridService) { }
+  constructor(private gridService: GridService, private renderService: RenderService) { }
 
   public clearAndReset() {
     this.gridService.clearAndReset();
   }
 
   public visualizeSelectedAlgorithm() {
-    this.gridService.visualizeAlgorithm(AlgorithmType.Dijkstra);
+    this.renderService.visualizeAlgorithm(AlgorithmType.Dijkstra);
   }
 }

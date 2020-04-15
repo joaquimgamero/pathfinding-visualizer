@@ -1,6 +1,4 @@
 export function computeDijkstra(grid, startNode, finishNode) {
-    console.log("Computing Dijkstra...");
-
     if (!grid || !startNode || !finishNode || startNode == finishNode) {
         return false;
     }
@@ -114,6 +112,7 @@ function uncheckAllNodes(nodes) {
     nodes.forEach(node => {
         if (!node.isStart) {
             node.hasBeenChecked = false;
+            node.distance = Infinity;
         }
     });
 }
