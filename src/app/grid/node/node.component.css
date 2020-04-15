@@ -46,7 +46,7 @@
 
 
 .obstacle {
-    background-color: black;
+    background-color: var(--obstacle-color);
 }
 
 /* ------------ Directions ------------ */
