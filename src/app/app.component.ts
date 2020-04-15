@@ -18,6 +18,7 @@ export class AppComponent {
   }
 
   public visualizeSelectedAlgorithm() {
+    this.gridService.resetDistances();
     this.renderService.visualizeAlgorithm(AlgorithmType.Dijkstra);
   }
 }

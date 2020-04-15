@@ -28,4 +28,8 @@ export class NodeComponent implements OnInit {
   public onChangeState(nodeType: NodeType) {
     this.node.toggleType(nodeType);
   }
+
+  public logInfo() {
+    console.log(this.node);
+  }
 }

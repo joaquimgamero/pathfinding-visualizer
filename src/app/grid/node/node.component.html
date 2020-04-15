@@ -1,4 +1,5 @@
-<div (mouseover)="onMouseOver(nodeType.Obstacle)" (mousedown)="onChangeState(nodeType.Obstacle)" class="node"
+<div (click)="logInfo()" (mouseover)="onMouseOver(nodeType.Obstacle)" (mousedown)="onChangeState(nodeType.Obstacle)"
+    class="node"
     [ngClass]="{ 'start-node' : node.isStart, 'end-node' : node.isFinish, 'has-been-checked' : node.markAsChecked, 'route' : node.isRoute, 'obstacle' : node.isObstacle }">
     <!-- {{node.x}}, {{node.y}} -->
     <div *ngIf="node.isStart && !node.isRoute" class="start-node-icon right"></div>

@@ -27,6 +27,11 @@ export class Node {
         this.isRoute = false;
     }
 
+    public makeUnknown() {
+        this.hasBeenChecked = false;
+        this.distance = Infinity;
+    }
+
     public removeRoute() {
         this.isRoute = false;
     }

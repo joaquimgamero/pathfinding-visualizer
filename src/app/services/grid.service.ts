@@ -84,6 +84,16 @@ export class GridService {
     return this.findNode(this.currentFinishNodePosition.x, this.currentFinishNodePosition.y);
   }
 
+  public resetDistances() {
+    this.grid.forEach(row => {
+      row.forEach(node => {
+        if (!node.isStart) {
+          node.makeUnknown();
+        }
+      });
+    });
+  }
+
   private clearGrid() {
     this.grid.forEach(row => {
       row.forEach(node => {
