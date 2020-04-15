@@ -1,6 +1,4 @@
 export function computeDijkstra(grid, startNode, finishNode) {
-    console.log("Computing Dijkstra...");
-
     if (!grid || !startNode || !finishNode || startNode == finishNode) {
         return false;
     }
@@ -16,8 +14,6 @@ export function computeDijkstra(grid, startNode, finishNode) {
 
         // If we find and obstacle we skip it
         if (closestNode.isObstacle) {
-            console.log("Obstacle found!");
-            console.log(closestNode);
             continue;
         }
 
@@ -116,6 +112,7 @@ function uncheckAllNodes(nodes) {
     nodes.forEach(node => {
         if (!node.isStart) {
             node.hasBeenChecked = false;
+            node.distance = Infinity;
         }
     });
 }

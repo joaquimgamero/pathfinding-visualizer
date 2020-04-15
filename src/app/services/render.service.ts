@@ -23,7 +23,6 @@ export class RenderService {
         }, i / 100);
       });
     }
-
     const shortestPath = this.algorithmsService.getShortestPath(this.gridService.finishNode, algorithmType);
     this.renderRoute(shortestPath);
   }
@@ -42,17 +41,20 @@ export class RenderService {
     }
   }
 
-  public visualizeAlgorithm(grid: Array<Array<Node>>, startNode: Node, finishNode: Node, algorithmType: AlgorithmType) {
-    this.removeRoute(grid);
-    const checkedNodesInOrder: Array<Node> = this.algorithmsService.computeAlgorithm(grid, startNode, finishNode, algorithmType);
-    console.log(checkedNodesInOrder);
+  public visualizeAlgorithm(algorithmType: AlgorithmType) {
+    this.removeRouteAndCheckedNodes();
+
+    const checkedNodesInOrder: Array<Node> =
+      this.algorithmsService.computeAlgorithm(this.gridService.grid, this.gridService.startNode, this.gridService.finishNode, algorithmType);
     this.renderAlgorithm(checkedNodesInOrder, algorithmType);
   }
 
-  private removeRoute(grid: Array<Array<Node>>) {
-    grid.forEach(row => {
+  private removeRouteAndCheckedNodes() {
+    this.gridService.grid.forEach(row => {
       row.forEach(node => {
         node.removeRoute();
+        node.hasBeenChecked = false;
+        node.previousNode = null;
       });
     });
   }

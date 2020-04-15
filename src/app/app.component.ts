@@ -18,7 +18,6 @@ export class AppComponent {
   }
 
   public visualizeSelectedAlgorithm() {
-    this.renderService.visualizeAlgorithm(this.gridService.grid, this.gridService.startNode,
-      this.gridService.finishNode, AlgorithmType.Dijkstra);
+    this.renderService.visualizeAlgorithm(AlgorithmType.Dijkstra);
   }
 }
