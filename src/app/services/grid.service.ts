@@ -84,6 +84,8 @@ export class GridService {
     return this.findNode(this.currentFinishNodePosition.x, this.currentFinishNodePosition.y);
   }
 
+  // In case had run the algorithm previously, we have to set the nodes
+  // unknown again, since the map has probably changed.
   public resetDistances() {
     this.grid.forEach(row => {
       row.forEach(node => {

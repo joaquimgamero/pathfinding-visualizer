@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { GridService } from './grid.service';
 import { AlgorithmType } from '../enums/algorithmType.enum';
 import { Node } from '../models/node';
+import { AlgorithmResponse } from '../models/algorithm-response';
 import { AlgorithmsService } from './algorithms.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RenderService {
+  public lastAlgorithmExecution: AlgorithmResponse;
 
   constructor(private gridService: GridService, private algorithmsService: AlgorithmsService) { }
 
@@ -23,8 +25,10 @@ export class RenderService {
         }, i / 100);
       });
     }
-    const shortestPath = this.algorithmsService.getShortestPath(this.gridService.finishNode, algorithmType);
-    this.renderRoute(shortestPath);
+
+    if (this.lastAlgorithmExecution.objectiveFound) {
+      this.renderRoute(this.lastAlgorithmExecution.nodesInShortestPathOrder);
+    }
   }
 
   public async renderRoute(shortestPath: Array<Node>) {
@@ -44,9 +48,11 @@ export class RenderService {
   public visualizeAlgorithm(algorithmType: AlgorithmType) {
     this.removeRouteAndCheckedNodes();
 
-    const checkedNodesInOrder: Array<Node> =
+    this.lastAlgorithmExecution =
       this.algorithmsService.computeAlgorithm(this.gridService.grid, this.gridService.startNode, this.gridService.finishNode, algorithmType);
-    this.renderAlgorithm(checkedNodesInOrder, algorithmType);
+    this.renderAlgorithm(this.lastAlgorithmExecution.checkedNodes, algorithmType);
+
+    console.log(this.lastAlgorithmExecution);
   }
 
   private removeRouteAndCheckedNodes() {
