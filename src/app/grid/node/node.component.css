@@ -2,11 +2,17 @@
     width: 20px;
     height: 20px;
     border: 0.5px solid;
-    border-color: var(--grid-color);
     float: left;
     font-size: 5px;
-
     padding: 1px;
+}
+
+.border-color-obstacle {
+    border-color: var(--obstacle-color);
+}
+
+.border-color-grid {
+    border-color: var(--grid-color);
 }
 
 .start-node-icon {

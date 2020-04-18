@@ -1,17 +1,25 @@
-.header {
-    background-color: var(--obstacle-color);
-    color: var(--main-text-color);
-    padding: 10px;
-    height: 35px;
-
-}
-
 .title {
-    float: left;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     height: -webkit-fill-available;
     font-size: 1.2vw;
     font-weight: bolder;
+    width: 20vw;
+    padding-top: 0.3vw;
+}
+
+.subtitle {
+    position: relative;
+}
+
+.menu {
+    margin-bottom: 0.3vw;
+}
+
+/* Buttons */
+.button-visualize {
+    background-color: #15cb85;
+}
+
+.button-reset {
+    margin-left: 0.3vw;
+    background-color: var(--grid-color);
 }

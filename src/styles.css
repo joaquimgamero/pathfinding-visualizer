@@ -1,9 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* Baloo Bhaina 2 Font style */
-@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaina+2&display=swap');
+/* Font: Roboto Mono */
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
 
 * {
-    font-family: 'Baloo Bhaina 2', cursive;
+    font-family: 'Rubik', sans-serif;
     margin: 0;
+}
+
+.grid-container {
+    display: inline-grid;
+    grid-template-columns: auto auto;
+}
+
+button {
+    border: none;
+    border-radius: 5%;
+    color: white;
+    padding: 0.6vw;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 }

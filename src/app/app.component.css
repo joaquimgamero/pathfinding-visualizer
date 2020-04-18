@@ -1,12 +1,22 @@
 * {
-    --grid-color: lightskyblue;
-    --obstacle-color: #002752;
-    --main-text-color:  ivory;
+    --grid-color: #5ab9ea;
+    --obstacle-color: #374785;
+    --main-text-color:  white;
+}
+
+.header {
+    background-color: var(--obstacle-color);
+    /* background-color: #24305e; */
+    color: var(--main-text-color);
+    padding: 10px;
+    height: 2vw;
+    /* width: -webkit-fill-available; */
+    grid-column: 1 / 5;
+    grid-row: auto;
 }
 
 .grid {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 1000px;
+    padding: 2vw;
 }
