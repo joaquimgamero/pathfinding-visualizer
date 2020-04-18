@@ -1,4 +1,12 @@
 * {
     --grid-color: lightskyblue;
     --obstacle-color: #002752;
+    --main-text-color:  ivory;
+}
+
+.grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1000px;
 }

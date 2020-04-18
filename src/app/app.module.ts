@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { GridComponent } from './grid/grid.component';
 import { NodeComponent } from './grid/node/node.component';
 import { GridService } from './services/grid.service';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GridComponent,
-    NodeComponent
+    NodeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule
