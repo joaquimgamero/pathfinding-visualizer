@@ -6,13 +6,13 @@
 
 .header {
     background-color: var(--obstacle-color);
-    /* background-color: #24305e; */
     color: var(--main-text-color);
     padding: 10px;
     height: 2vw;
-    /* width: -webkit-fill-available; */
-    grid-column: 1 / 5;
-    grid-row: auto;
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .grid {

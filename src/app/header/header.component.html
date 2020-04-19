@@ -4,10 +4,10 @@
     </div>
     <div class="menu">
 
-        <select name="algorithm-select" [(ngModel)]="selectedAlgorithm">
-            <option [value]="algorithm" *ngFor="let algorithm of allAlgorithms">{{algorithm}}</option>
+        <select name="algorithm-select" class="algorithm-select" [(ngModel)]="selectedAlgorithm">
+            <option [value]="algorithm" *ngFor="let algorithm of allAlgorithms" class="algorithm-select-item">
+                {{algorithm}}</option>
         </select>
-
 
         <button (click)="visualizeAlgorithm()" class="button-visualize">Visualize!</button>
         <button class="button-reset">Reset!</button>
