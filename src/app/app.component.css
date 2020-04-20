@@ -18,5 +18,5 @@
 .grid {
     display: flex;
     justify-content: center;
-    padding: 2vw;
+    padding: 0 2vw 2vw 2vw;
 }

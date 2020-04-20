@@ -53,6 +53,12 @@ export class Node {
                     this.type = this.type == NodeType.Empty ? NodeType.Obstacle : NodeType.Empty;
                 }
                 break;
+            case NodeType.Start:
+                this.type = NodeType.Start;
+                break;
+            case NodeType.Finish:
+                this.type = NodeType.Finish;
+                break;
             default:
                 break;
         }

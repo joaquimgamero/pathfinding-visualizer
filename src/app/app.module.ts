@@ -10,13 +10,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { LegendComponent } from './legend/legend.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GridComponent,
     NodeComponent,
-    HeaderComponent
+    HeaderComponent,
+    LegendComponent
   ],
   imports: [
     BrowserModule,
