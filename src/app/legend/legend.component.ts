@@ -21,9 +21,9 @@ export class LegendComponent implements OnInit {
     this.obstacleNode = new Node(0, 0);
     this.pathNode = new Node(0, 0);
 
-    this.scannedNode.hasBeenChecked = true;
-    this.obstacleNode.toggleType(NodeType.Obstacle);
-    this.pathNode.isRoute = true;
+    // this.scannedNode.hasBeenChecked = true;
+    // this.obstacleNode.toggleType(NodeType.Obstacle);
+    // this.pathNode.isRoute = true;
   }
 
 }

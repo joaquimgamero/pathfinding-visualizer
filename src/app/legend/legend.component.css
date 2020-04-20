@@ -20,6 +20,8 @@
 .legend-node {
     margin-right: 0.5vw;
     border: 1.2px solid var(--grid-color);
+    width: 1vw;
+    height: 1vw;
 }
 
 .legend-obstacle-node {

@@ -79,4 +79,8 @@ export class Node {
     get markAsChecked(): boolean {
         return this.hasBeenChecked;
     }
+
+    get isLegendNode(): boolean {
+        return this.x <= 0 && this.y <= 0;
+    }
 }

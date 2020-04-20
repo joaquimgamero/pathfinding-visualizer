@@ -24,12 +24,12 @@
 
 /* Buttons */
 .button-visualize {
-    background-color: #57d5ff;
     color: mediumblue;
+    background-color: #ff4081;
 }
 
 .button-reset {
     margin-left: 1vw;
-    border-color: white;
-    color: white;
+    color: mediumblue;
+    background-color: skyblue;
 }

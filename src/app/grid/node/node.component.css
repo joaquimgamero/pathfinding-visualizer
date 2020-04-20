@@ -1,13 +1,16 @@
 .node {
-    width: 1vw;
-    height: 1vw;
-    border: 0.5px solid;
+    width: 1.3vw;
+    height: 1.3vw;
     float: left;
     font-size: 5px;
     /* padding: 1px; */
     -webkit-transition: background-color 250ms linear;
     -ms-transition: background-color 250ms linear;
     transition: background-color 250ms linear;
+}
+
+.node-border {
+    border: 0.5px solid;
 }
 
 .border-color-obstacle {
@@ -27,7 +30,6 @@
     background-color: yellow;
     transition: background-color 500ms linear;
 }
-
 
 .obstacle {
     background-color: var(--obstacle-color);
