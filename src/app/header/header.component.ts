@@ -21,17 +21,28 @@ export class HeaderComponent implements OnInit {
     this.selectedAlgorithm = AlgorithmType.Dijkstra;
   }
 
-  public clearAndReset() {
+  public onClearAndReset() {
     this.gridService.clearAndReset();
   }
 
-  public visualizeAlgorithm() {
-    console.log(this.selectedAlgorithm);
+  public onRemoveObstacles() {
+    this.gridService.removeObstacles();
+  }
+
+  public onRemovePath() {
+    this.gridService.removeRoute();
+  }
+
+  public onRemoveScanned() {
+    this.gridService.removeScanned();
+  }
+
+  public onVisualizeAlgorithm() {
     this.gridService.resetDistances();
     this.renderService.visualizeAlgorithm(this.selectedAlgorithm);
   }
 
-  public renderInProgress() {
+  public get renderInProgress(): boolean {
     return this.renderService.renderInProgress;
   }
 }

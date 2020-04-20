@@ -30,6 +30,8 @@ export class RenderService {
     if (this.lastAlgorithmExecution.objectiveFound) {
       this.renderRoute(this.lastAlgorithmExecution.nodesInShortestPathOrder);
     }
+
+    this.renderInProgress = false;
   }
 
   public async renderRoute(shortestPath: Array<Node>) {
@@ -44,8 +46,6 @@ export class RenderService {
         }, shortestPath.length / 10);
       });
     }
-
-    this.renderInProgress = false;
   }
 
   public visualizeAlgorithm(algorithmType: AlgorithmType) {

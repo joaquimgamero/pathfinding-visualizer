@@ -32,8 +32,18 @@ export class Node {
         this.distance = Infinity;
     }
 
+    public removeScanned() {
+        this.hasBeenChecked = false;
+    }
+
     public removeRoute() {
         this.isRoute = false;
+    }
+
+    public removeObstacle() {
+        if (this.type === NodeType.Obstacle) {
+            this.toggleType(NodeType.Obstacle);
+        }
     }
 
     public toggleType(nodeType: NodeType) {

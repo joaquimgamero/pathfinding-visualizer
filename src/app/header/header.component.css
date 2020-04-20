@@ -1,11 +1,10 @@
 .title {
-    height: -webkit-fill-available;
+    margin-left: 1vw;
+    margin-right: 2vw;
     font-size: 1.5vw;
     font-weight: bolder;
     width: 30vw;
-    padding-top: 0.5vw;
-    margin-top: 1.7vw;
-    margin-left: 1vw;
+    font-family: 'Roboto', cursive;
 }
 
 .subtitle {
@@ -25,7 +24,7 @@
 
 /* Buttons */
 .button-visualize {
-    background-color: springgreen;
+    background-color: #57d5ff;
     color: mediumblue;
 }
 

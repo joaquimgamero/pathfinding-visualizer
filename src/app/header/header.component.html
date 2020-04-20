@@ -1,12 +1,10 @@
 <div class="grid-container">
-    <div class="title">
-        {{ title }}
-    </div>
     <div class="menu">
+        <span class="title">{{ title }}</span>
 
         <mat-form-field class="algorithm-select">
             <mat-label>Algorithm</mat-label>
-            <mat-select [disabled]="renderInProgress()" [(ngModel)]="selectedAlgorithm" name="algorithm-select">
+            <mat-select [disabled]="renderInProgress" [(ngModel)]="selectedAlgorithm" name="algorithm-select">
                 <mat-option *ngFor="let algorithm of allAlgorithms" [value]="algorithm.index">
                     {{ algorithm.name }}
                 </mat-option>
@@ -15,16 +13,22 @@
 
         <mat-form-field class="algorithm-select">
             <mat-label>Mazes</mat-label>
-            <mat-select [disabled]="renderInProgress()" [(ngModel)]="selectedAlgorithm" name="algorithm-select">
+            <mat-select [disabled]="renderInProgress" [(ngModel)]="selectedAlgorithm" name="algorithm-select">
                 <mat-option *ngFor="let algorithm of allAlgorithms" [value]="algorithm.index">
                     {{ algorithm.name }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
 
-        <button (click)="visualizeAlgorithm()" [disabled]="renderInProgress()" mat-raised-button
+        <button (click)="onVisualizeAlgorithm()" [disabled]="renderInProgress" mat-raised-button
             class="button-visualize">Visualize!</button>
-        <button (click)="clearAndReset()" [disabled]="renderInProgress()" mat-stroked-button color="accent"
-            class="button-reset">Reset</button>
+        <button (click)="onRemoveObstacles()" [disabled]="renderInProgress" mat-stroked-button color="accent"
+            class="button-reset">Clear walls</button>
+        <button (click)="onRemovePath()" [disabled]="renderInProgress" mat-stroked-button color="accent"
+            class="button-reset">Clear path</button>
+        <button (click)="onRemoveScanned()" [disabled]="renderInProgress" mat-stroked-button color="accent"
+            class="button-reset">Clear scanned</button>
+        <button (click)="onClearAndReset()" [disabled]="renderInProgress" mat-stroked-button color="accent"
+            class="button-reset">Reset & Random</button>
     </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Node } from '../../models/node';
 import { NodeType } from 'src/app/enums/nodeType.enum';
 import { GridService } from 'src/app/services/grid.service';
+import { RenderService } from 'src/app/services/render.service';
 
 @Component({
   selector: 'node',
@@ -13,7 +14,7 @@ export class NodeComponent implements OnInit {
 
   nodeType: typeof NodeType = NodeType;
 
-  constructor(private gridService: GridService) {
+  constructor(private gridService: GridService, private renderService: RenderService) {
   }
 
   ngOnInit(): void {
@@ -26,7 +27,9 @@ export class NodeComponent implements OnInit {
   }
 
   public onChangeState(nodeType: NodeType) {
-    this.node.toggleType(nodeType);
+    if (!this.renderService.renderInProgress) {
+      this.node.toggleType(nodeType);
+    }
   }
 
   public logInfo() {
