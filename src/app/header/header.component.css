@@ -1,9 +1,11 @@
 .title {
     height: -webkit-fill-available;
-    font-size: 1.2vw;
+    font-size: 1.5vw;
     font-weight: bolder;
-    width: 20vw;
-    padding-top: 0.3vw;
+    width: 30vw;
+    padding-top: 0.5vw;
+    margin-top: 1.7vw;
+    margin-left: 1vw;
 }
 
 .subtitle {
@@ -12,36 +14,23 @@
 
 .menu {
     margin-bottom: 0.3vw;
+    padding-bottom: 0.5vw;
 }
 
 .algorithm-select {
-    background-color: var(--grid-color);
-    margin-right: 1vw;
-    color: #ffffff;
-    padding: 8px 16px;
-    border: 1px solid transparent;
-    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-    cursor: pointer;
-    user-select: none;
+    margin-right: 2vw;
+    margin-top: 1.6vw;
+    color: white;
 }
-
-.algorithm-select-item {
-    position: absolute;
-    background-color: var(--grid-color);
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index: 99;
-    padding: 8px 16px;
-}
-
 
 /* Buttons */
 .button-visualize {
-    background-color: #15cb85;
+    background-color: springgreen;
+    color: mediumblue;
 }
 
 .button-reset {
-    margin-left: 0.3vw;
-    background-color: var(--grid-color);
+    margin-left: 1vw;
+    border-color: white;
+    color: white;
 }

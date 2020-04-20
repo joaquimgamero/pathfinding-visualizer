@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AlgorithmType } from '../enums/algorithmType.enum';
+import { GridService } from '../services/grid.service';
+import { RenderService } from '../services/render.service';
 
 @Component({
   selector: 'header',
@@ -9,20 +11,27 @@ import { AlgorithmType } from '../enums/algorithmType.enum';
 export class HeaderComponent implements OnInit {
   @Input() title: string;
 
-  selectedAlgorithm: string;
-  allAlgorithms: Array<string> = [];
+  selectedAlgorithm: AlgorithmType;
+  allAlgorithms = [];
 
-  constructor() { }
+  constructor(private gridService: GridService, private renderService: RenderService) { }
 
   ngOnInit(): void {
-    Object.values(AlgorithmType).forEach(algorithm => {
-      if (typeof (algorithm) === 'string') this.allAlgorithms.push(algorithm.toString());
-    });
+    this.allAlgorithms = Object.keys(AlgorithmType).filter(e => !isNaN(+e)).map(o => { return { index: +o, name: AlgorithmType[o] } });
+    this.selectedAlgorithm = AlgorithmType.Dijkstra;
+  }
 
-    this.selectedAlgorithm = this.allAlgorithms[0];
+  public clearAndReset() {
+    this.gridService.clearAndReset();
   }
 
   public visualizeAlgorithm() {
-    console.log(Object.values(AlgorithmType));
+    console.log(this.selectedAlgorithm);
+    this.gridService.resetDistances();
+    this.renderService.visualizeAlgorithm(this.selectedAlgorithm);
+  }
+
+  public renderInProgress() {
+    return this.renderService.renderInProgress;
   }
 }

@@ -4,12 +4,27 @@
     </div>
     <div class="menu">
 
-        <select name="algorithm-select" class="algorithm-select" [(ngModel)]="selectedAlgorithm">
-            <option [value]="algorithm" *ngFor="let algorithm of allAlgorithms" class="algorithm-select-item">
-                {{algorithm}}</option>
-        </select>
+        <mat-form-field class="algorithm-select">
+            <mat-label>Algorithm</mat-label>
+            <mat-select [disabled]="renderInProgress()" [(ngModel)]="selectedAlgorithm" name="algorithm-select">
+                <mat-option *ngFor="let algorithm of allAlgorithms" [value]="algorithm.index">
+                    {{ algorithm.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 
-        <button (click)="visualizeAlgorithm()" class="button-visualize">Visualize!</button>
-        <button class="button-reset">Reset!</button>
+        <mat-form-field class="algorithm-select">
+            <mat-label>Mazes</mat-label>
+            <mat-select [disabled]="renderInProgress()" [(ngModel)]="selectedAlgorithm" name="algorithm-select">
+                <mat-option *ngFor="let algorithm of allAlgorithms" [value]="algorithm.index">
+                    {{ algorithm.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button (click)="visualizeAlgorithm()" [disabled]="renderInProgress()" mat-raised-button
+            class="button-visualize">Visualize!</button>
+        <button (click)="clearAndReset()" [disabled]="renderInProgress()" mat-stroked-button color="accent"
+            class="button-reset">Reset</button>
     </div>
 </div>

@@ -1,12 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-
-/* Font: Roboto Mono */
-@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
-
-* {
-    font-family: 'Rubik', sans-serif;
-    margin: 0;
-}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .grid-container {
     display: inline-grid;
@@ -21,4 +14,37 @@ button {
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    font-size: 1vw;
+}
+
+
+mat-form-field.mat-form-field {
+    color:white;
+}
+
+.mat-select-value {
+    color: white;
+}
+
+/* Ripple, focused */
+.mat-form-field.mat-focused .mat-form-field-ripple{
+    background-color: aquamarine;
+}
+
+/* Underline */
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: aquamarine;
+}
+
+/* Label color */
+mat-form-field span.mat-form-field-label-wrapper label {
+    color: white !important;
+}
+
+.mat-select-arrow {
+    color: white;
+}
+
+.mat-form-field.mat-focused .mat-select-arrow {
+    color: white;
 }
