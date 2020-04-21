@@ -1,0 +1,16 @@
+<div *ngIf="canDisplayInfo" class="info">
+    <ng-container *ngIf="objectiveFound; else notFound">
+        <div>
+            🌌 Weapon of choice:<span class="algorithm-type">{{ algorithmType }}</span>
+        </div>
+        <div>
+            🎠 Scanned nodes: <span class="scanned-nodes">{{ scannedNodes }}</span> 🎯 Shortest path length:
+            <span class="shortest-path">{{ pathLength }}</span>.
+        </div>
+    </ng-container>
+    <ng-template #notFound>
+        <div class="red">
+            🎱 Couldn't find the objective!
+        </div>
+    </ng-template>
+</div>

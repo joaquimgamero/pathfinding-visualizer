@@ -17,11 +17,12 @@ export class HeaderComponent implements OnInit {
   constructor(private gridService: GridService, private renderService: RenderService) { }
 
   ngOnInit(): void {
-    this.allAlgorithms = Object.keys(AlgorithmType).filter(e => !isNaN(+e)).map(o => { return { index: +o, name: AlgorithmType[o] } });
+    this.allAlgorithms = Object.values(AlgorithmType);
     this.selectedAlgorithm = AlgorithmType.Dijkstra;
   }
 
   public onClearAndReset() {
+    this.renderService.lastAlgorithmExecution = null;
     this.gridService.clearAndReset();
   }
 

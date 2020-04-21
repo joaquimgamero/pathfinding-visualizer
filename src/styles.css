@@ -1,7 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@500&display=swap');
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a {
+    color:deeppink;
+}
+
+.red {
+    color:red;
+}
 
 .grid-container {
     display: inline-grid;

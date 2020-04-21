@@ -1,0 +1,40 @@
+.info {
+    width: -webkit-fill-available;
+    font-size: 0.8vw;
+    margin-bottom: 0.5vw;
+    display: inline-flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.scanned-nodes {
+    border-radius: 0.1vw;
+    border: solid 1px deeppink;
+    padding: 0.1vw 0.2vw 0.1vw 0.2vw;
+    background-color: paleturquoise;
+    color: black;
+    margin: 0.3vw;
+    font-family: monospace;
+}
+
+.shortest-path {
+    border-radius: 0.1vw;
+    border: solid 1px deeppink;
+    padding: 0.1vw 0.2vw 0.1vw 0.2vw;
+    background-color: yellow;
+    color: deeppink;
+    margin: 0.3vw;
+    font-family: monospace;
+}
+
+.algorithm-type {
+    border-radius: 0.1vw;
+    border: solid 1px deeppink;
+    padding: 0.1vw 0.2vw 0.1vw 0.2vw;
+    background-color: black;
+    color: white;
+    margin: 0.3vw;
+    font-family: monospace;
+}

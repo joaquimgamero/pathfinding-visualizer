@@ -5,8 +5,8 @@
         <mat-form-field class="algorithm-select">
             <mat-label>Algorithm</mat-label>
             <mat-select [disabled]="renderInProgress" [(ngModel)]="selectedAlgorithm" name="algorithm-select">
-                <mat-option *ngFor="let algorithm of allAlgorithms" [value]="algorithm.index">
-                    {{ algorithm.name }}
+                <mat-option *ngFor="let algorithm of allAlgorithms" [value]="algorithm">
+                    {{ algorithm }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
@@ -14,8 +14,8 @@
         <mat-form-field class="algorithm-select">
             <mat-label>Mazes</mat-label>
             <mat-select [disabled]="renderInProgress" [(ngModel)]="selectedAlgorithm" name="algorithm-select">
-                <mat-option *ngFor="let algorithm of allAlgorithms" [value]="algorithm.index">
-                    {{ algorithm.name }}
+                <mat-option *ngFor="let algorithm of allAlgorithms; index as i" [value]="algorithm">
+                    {{ allAlgorithms[algorithm] }}
                 </mat-option>
             </mat-select>
         </mat-form-field>

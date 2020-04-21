@@ -11,6 +11,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { LegendComponent } from './legend/legend.component';
+import { FooterComponent } from './footer/footer.component';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { LegendComponent } from './legend/legend.component';
     GridComponent,
     NodeComponent,
     HeaderComponent,
-    LegendComponent
+    LegendComponent,
+    FooterComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
