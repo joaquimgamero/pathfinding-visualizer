@@ -26,8 +26,21 @@
     color: var(--main-text-color);
     padding: 10px;
     font-size: 0.6vw;
-    position: fixed;
+    position: relative;
     left: 0;
     bottom: 0;
     width: -webkit-fill-available;
+    height: 4.5%;
+}
+
+.info {
+    /* position: fixed; */
+    /* left: 0;
+    bottom: 0; */
+    width: -webkit-fill-available;
+}
+
+.content-wrapper {
+    min-height: 80vh;
+    background-color: white;
 }

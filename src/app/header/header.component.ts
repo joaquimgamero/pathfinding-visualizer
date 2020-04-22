@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AlgorithmType } from '../enums/algorithmType.enum';
 import { GridService } from '../services/grid.service';
 import { RenderService } from '../services/render.service';
+import { Maze } from '../enums/mazes.enum';
 
 @Component({
   selector: 'header',
@@ -12,13 +13,17 @@ export class HeaderComponent implements OnInit {
   @Input() title: string;
 
   selectedAlgorithm: AlgorithmType;
+  selectedMaze: Maze;
   allAlgorithms = [];
+  allMazes = [];
 
   constructor(private gridService: GridService, private renderService: RenderService) { }
 
   ngOnInit(): void {
     this.allAlgorithms = Object.values(AlgorithmType);
     this.selectedAlgorithm = AlgorithmType.Dijkstra;
+
+    this.allMazes = Object.values(Maze);
   }
 
   public onClearAndReset() {

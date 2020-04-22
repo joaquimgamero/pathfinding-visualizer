@@ -4,10 +4,19 @@ html, body { height: 100%; }
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: #541eff;
 }
 
 a {
-    color:deeppink;
+    /* color:deeppink; */
+    background: deeppink;
+    background: -webkit-linear-gradient(deeppink, orange , yellow);
+    background: -o-linear-gradient(right, deeppink, orange , yellow);
+    background: -moz-linear-gradient(right, deeppink, orange , yellow);
+    background: linear-gradient(to right, deeppink, orange , yellow);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .red {
