@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Node } from '../models/node';
 import { computeDijkstra } from '../algorithms/dijkstra'
 import { getDijkstraShortestPath } from '../algorithms/dijkstra'
+import { computeAstar } from '../algorithms/a-star'
 import { AlgorithmType } from '../enums/algorithmType.enum';
 import { AlgorithmResponse } from '../models/algorithm-response';
 
@@ -15,15 +16,19 @@ export class AlgorithmsService {
 
   public computeAlgorithm(grid: Array<Array<Node>>, startNode: Node, finishNode: Node, algorithmType: AlgorithmType): AlgorithmResponse {
     let checkedNodes = [];
-    let path = [];
 
     switch (algorithmType) {
       case AlgorithmType.Dijkstra:
         checkedNodes = computeDijkstra(grid, startNode, finishNode);
-        path = this.getShortestPath(finishNode, AlgorithmType.Dijkstra);
+        break;
+      case AlgorithmType.Astar:
+        checkedNodes = computeAstar(grid, startNode, finishNode);
+        break;
     }
 
+    let path = this.getShortestPath(finishNode, AlgorithmType.Dijkstra);
     this.lastAlgorithmResponse = new AlgorithmResponse(checkedNodes, path, algorithmType);
+
     return this.lastAlgorithmResponse;
   }
 
