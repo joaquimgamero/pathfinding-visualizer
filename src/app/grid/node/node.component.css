@@ -1,72 +1,36 @@
 .node {
-    width: 20px;
-    height: 20px;
-    border: 0.5px solid;
-    border-color: var(--grid-color);
+    width: 1.3vw;
+    height: 1.3vw;
     float: left;
     font-size: 5px;
-
-    padding: 1px;
+    /* padding: 1px; */
+    -webkit-transition: background-color 250ms linear;
+    -ms-transition: background-color 250ms linear;
+    transition: background-color 250ms linear;
 }
 
-.start-node-icon {
-    border: solid royalblue;
-    border-width: 0 5px 5px 0;
-    display: inline-block;
-    padding: 3px;
-    margin-top: 3px;
-    width: 5px;
-    height: 5px;
-    padding: 2px;
+.node-border {
+    border: 0.5px solid;
 }
 
-.end-node-icon {
-    border: solid 3px springgreen;
-    display: inline-block;
-    margin-top: 2px;
-    width: 6px;
-    height: 6px;
-    padding: 2px;
-    margin-left: 2px;
+.border-color-obstacle {
+    border-color: var(--obstacle-color);
+}
+
+.border-color-grid {
+    border-color: var(--grid-color);
 }
 
 .has-been-checked {
     background-color: paleturquoise;
-    -webkit-transition: background-color 500ms linear;
-    -ms-transition: background-color 500ms linear;
     transition: background-color 500ms linear;
 }
 
 .route {
     background-color: yellow;
-    -webkit-transition: background-color 500ms linear;
-    -ms-transition: background-color 500ms linear;
     transition: background-color 500ms linear;
 }
 
-
 .obstacle {
     background-color: var(--obstacle-color);
-}
-
-/* ------------ Directions ------------ */
-
-.right {
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-}
-
-.left {
-    transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
-}
-
-.up {
-    transform: rotate(-135deg);
-    -webkit-transform: rotate(-135deg);
-}
-
-.down {
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
 }

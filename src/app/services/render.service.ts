@@ -10,6 +10,7 @@ import { AlgorithmsService } from './algorithms.service';
 })
 export class RenderService {
   public lastAlgorithmExecution: AlgorithmResponse;
+  public renderInProgress: boolean;
 
   constructor(private gridService: GridService, private algorithmsService: AlgorithmsService) { }
 
@@ -29,6 +30,8 @@ export class RenderService {
     if (this.lastAlgorithmExecution.objectiveFound) {
       this.renderRoute(this.lastAlgorithmExecution.nodesInShortestPathOrder);
     }
+
+    this.renderInProgress = false;
   }
 
   public async renderRoute(shortestPath: Array<Node>) {
@@ -46,13 +49,13 @@ export class RenderService {
   }
 
   public visualizeAlgorithm(algorithmType: AlgorithmType) {
+    this.renderInProgress = true;
+
     this.removeRouteAndCheckedNodes();
 
     this.lastAlgorithmExecution =
       this.algorithmsService.computeAlgorithm(this.gridService.grid, this.gridService.startNode, this.gridService.finishNode, algorithmType);
     this.renderAlgorithm(this.lastAlgorithmExecution.checkedNodes, algorithmType);
-
-    console.log(this.lastAlgorithmExecution);
   }
 
   private removeRouteAndCheckedNodes() {

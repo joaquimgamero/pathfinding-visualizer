@@ -1,0 +1,35 @@
+.title {
+    margin-left: 1vw;
+    margin-right: 2vw;
+    font-size: 1.5vw;
+    font-weight: bolder;
+    width: 30vw;
+    font-family: 'Roboto', cursive;
+}
+
+.subtitle {
+    position: relative;
+}
+
+.menu {
+    margin-bottom: 0.3vw;
+    padding-bottom: 0.5vw;
+}
+
+.algorithm-select {
+    margin-right: 2vw;
+    margin-top: 1.6vw;
+    color: white;
+}
+
+/* Buttons */
+.button-visualize {
+    color: yellow;
+    background-color: #ff4081;
+}
+
+.button-reset {
+    margin-left: 1vw;
+    color: mediumblue;
+    background-color: skyblue;
+}

@@ -9,12 +9,11 @@ import { AlgorithmResponse } from '../models/algorithm-response';
   providedIn: 'root'
 })
 export class AlgorithmsService {
+  lastAlgorithmResponse: AlgorithmResponse;
 
   constructor() { }
 
   public computeAlgorithm(grid: Array<Array<Node>>, startNode: Node, finishNode: Node, algorithmType: AlgorithmType): AlgorithmResponse {
-    let objectiveFound = false;
-    let pathLength = 0;
     let checkedNodes = [];
     let path = [];
 
@@ -24,7 +23,8 @@ export class AlgorithmsService {
         path = this.getShortestPath(finishNode, AlgorithmType.Dijkstra);
     }
 
-    return new AlgorithmResponse(checkedNodes, path, algorithmType);
+    this.lastAlgorithmResponse = new AlgorithmResponse(checkedNodes, path, algorithmType);
+    return this.lastAlgorithmResponse;
   }
 
   public getShortestPath(finishNode: Node, algorithmType: AlgorithmType) {
@@ -36,5 +36,4 @@ export class AlgorithmsService {
     }
   }
 
-  private
 }

@@ -72,6 +72,30 @@ export class GridService {
     this.createFinishNode(Math.floor((Math.random() * this.height) + 1), Math.floor((Math.random() * this.width) + 1));
   }
 
+  public removeObstacles() {
+    this.grid.forEach(row => {
+      row.forEach(node => {
+        node.removeObstacle();
+      });
+    });
+  }
+
+  public removeRoute() {
+    this.grid.forEach(row => {
+      row.forEach(node => {
+        node.removeRoute();
+      });
+    });
+  }
+
+  public removeScanned() {
+    this.grid.forEach(row => {
+      row.forEach(node => {
+        node.removeScanned();
+      });
+    });
+  }
+
   public findNode(x: number, y: number) {
     return this.grid[x - 1][y - 1];
   }

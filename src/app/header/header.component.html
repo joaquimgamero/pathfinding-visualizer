@@ -1,0 +1,34 @@
+<div class="grid-container">
+    <div class="menu">
+        <span class="title">{{ title }}</span>
+
+        <mat-form-field class="algorithm-select">
+            <mat-label>Algorithm</mat-label>
+            <mat-select [disabled]="renderInProgress" [(ngModel)]="selectedAlgorithm" name="algorithm-select">
+                <mat-option *ngFor="let algorithm of allAlgorithms" [value]="algorithm">
+                    {{ algorithm }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="algorithm-select">
+            <mat-label>Mazes</mat-label>
+            <mat-select [disabled]="renderInProgress" [(ngModel)]="selectedMaze" name="algorithm-select">
+                <mat-option *ngFor="let maze of allMazes; index as i" [value]="maze">
+                    {{ maze }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button (click)="onVisualizeAlgorithm()" [disabled]="renderInProgress" mat-raised-button
+            class="button-visualize">Visualize!</button>
+        <button (click)="onRemoveObstacles()" [disabled]="renderInProgress" mat-raised-button color="accent"
+            class="button-reset">Clear walls</button>
+        <button (click)="onRemovePath()" [disabled]="renderInProgress" mat-raised-button color="accent"
+            class="button-reset">Clear path</button>
+        <button (click)="onRemoveScanned()" [disabled]="renderInProgress" mat-raised-button color="accent"
+            class="button-reset">Clear scanned</button>
+        <button (click)="onClearAndReset()" [disabled]="renderInProgress" mat-raised-button color="accent"
+            class="button-reset">Reset & Random</button>
+    </div>
+</div>

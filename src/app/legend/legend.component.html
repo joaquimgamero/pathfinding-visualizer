@@ -1,0 +1,21 @@
+<div class="legend">
+    <div class="nodes">
+        <node [node]="emptyNode" class="legend-node"></node>
+        <div class="node-description">Empty node</div>
+        <node [node]="scannedNode" class="legend-node" style="background-color: paleturquoise;"></node>
+        <div class="node-description">Scanned node</div>
+        <node [node]="obstacleNode" class="legend-node"
+            style="background-color: var(--obstacle-color); border-color: var(--obstacle-color);">
+        </node>
+        <div class="node-description">Wall</div>
+        <node [node]="pathNode" class="legend-node" style="background-color: yellow;"></node>
+        <div class="node-description">Shortest path</div>
+        <div class="start-node-icon right core-nodes"></div>
+        <div class="node-description">Start</div>
+        <div class="end-node-icon right core-nodes"></div>
+        <div class="node-description">Goal</div>
+    </div>
+</div>
+<div class="pick-up">
+    <div>Pick an algorithm and click on Visualize!</div>
+</div>

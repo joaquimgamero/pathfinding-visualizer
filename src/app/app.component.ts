@@ -9,7 +9,7 @@ import { RenderService } from './services/render.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Pathfinding Algorithms Visualizer';
+  title = 'Pathfinding Playground';
 
   constructor(private gridService: GridService, private renderService: RenderService) { }
 

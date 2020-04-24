@@ -32,8 +32,18 @@ export class Node {
         this.distance = Infinity;
     }
 
+    public removeScanned() {
+        this.hasBeenChecked = false;
+    }
+
     public removeRoute() {
         this.isRoute = false;
+    }
+
+    public removeObstacle() {
+        if (this.type === NodeType.Obstacle) {
+            this.toggleType(NodeType.Obstacle);
+        }
     }
 
     public toggleType(nodeType: NodeType) {
@@ -42,6 +52,12 @@ export class Node {
                 if (this.type != NodeType.Start && this.type != NodeType.Finish) {
                     this.type = this.type == NodeType.Empty ? NodeType.Obstacle : NodeType.Empty;
                 }
+                break;
+            case NodeType.Start:
+                this.type = NodeType.Start;
+                break;
+            case NodeType.Finish:
+                this.type = NodeType.Finish;
                 break;
             default:
                 break;
@@ -62,5 +78,9 @@ export class Node {
 
     get markAsChecked(): boolean {
         return this.hasBeenChecked;
+    }
+
+    get isLegendNode(): boolean {
+        return this.x <= 0 && this.y <= 0;
     }
 }
