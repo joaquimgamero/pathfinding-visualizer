@@ -1,5 +1,5 @@
 export function computeDijkstra(grid, startNode, finishNode) {
-    if (!grid || !startNode || !finishNode || startNode == finishNode) {
+    if (!grid || !startNode || !finishNode || isSameNode(startNode, finishNode)) {
         return false;
     }
 
