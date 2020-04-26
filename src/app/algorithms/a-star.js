@@ -1,68 +1,90 @@
 export function computeAstar(grid, startNode, finishNode) {
-    if (!grid || !startNode || !finishNode || startNode == finishNode) {
+    if (!grid || !startNode || !finishNode || isSameNode(startNode, finishNode)) {
         return false;
     }
 
+    initializeHeuristics(grid);
+
+    const openSet = [startNode];
+    const closedSet = [];
     const checkedNodes = [];
-    const uncheckedNodes = getAllNodes(grid);
-    startNode.hasBeenChecked = true;
 
     // Check all unvisited nodes
-    while (Array.isArray(uncheckedNodes) && uncheckedNodes.length) {
-        // The node with the highest f(n) score
-        let current = getWinner(uncheckedNodes);
+    while ((Array.isArray(openSet) && openSet.length)) {
+        const current = getWinner(openSet);
+        current.hasBeenChecked = true;
+        checkedNodes.push(current);
 
-        if (isSameNode(current, startNode)) {
-            uncheckAllNodes(checkedNodes);
+        if (isSameNode(current, finishNode)) {
             return checkedNodes;
         }
 
-        let unvisitedNeighbors = getUnvisitedNeighbors(current, grid);
+        removeFromArray(openSet, current);
+        closedSet.push(current);
 
-        for (const neighbor of unvisitedNeighbors) {
-            if (!neighbor.isObstacle) {
-                const temptativeGScore = current.heuristics.gScore + heuristic(neighbor, current);
-                // let newPath = false;
+        const neighbors = getUnvisitedNeighbors(current, grid);
 
-                if (temptativeGScore < neighbor.heuristics.gScore) {
-                    neighbor.heuristics.gScore = temptativeGScore;
-                    // newPath = true;
-                }
+        for (const neighbor of neighbors) {
+            if (closedSet.includes(neighbor) || neighbor.isObstacle) {
+                continue;
+            }
 
-                neighbor.heuristics.heuristic = heuristic(neighbor, end);
+            const temptativeGScore = current.heuristics.gScore + heuristic(neighbor, current);
+            let isBetterPath = false;
+
+            if (openSet.includes(neighbor) && temptativeGScore < neighbor.heuristics.gScore) {
+                neighbor.heuristics.gScore = temptativeGScore;
+                isBetterPath = true;
+            } else {
+                neighbor.heuristics.gScore = temptativeGScore;
+                isBetterPath = true;
+                openSet.push(neighbor);
+            }
+
+            if (isBetterPath) {
+                neighbor.heuristics.heuristic = heuristic(neighbor, finishNode);
                 neighbor.heuristics.fScore = neighbor.heuristics.gScore + neighbor.heuristics.heuristic;
-                neighbor.previous = current;
+                neighbor.previousNode = current;
             }
         }
     }
 }
 
-function getAllNodes(grid) {
-    const nodes = [];
+// Backtracks from the finishNode to find the shortest path.
+// Only works when called *after* the dijkstra method above.
+export function getAstarShortestPath(finishNode) {
+    const nodesInShortestPathOrder = [];
+    let currentNode = finishNode;
 
-    for (const row of grid) {
-        for (const node of row) {
-            initializeHeuristics(node);
-            nodes.push(node);
-        }
+    while (currentNode != null) {
+        nodesInShortestPathOrder.unshift(currentNode);
+        currentNode = currentNode.previousNode;
     }
 
-    return nodes;
+    return nodesInShortestPathOrder;
 }
 
-function initializeHeuristics(node) {
-    node.heuristics = {
-        // gScore[n] is the cost of the cheapest path from start to n currently known.
-        gScore: 0,
-        // fScore[n] represents our current best guess as to how short a path from start to finish can be if it goes through n.
-        fScore: 0,
-        heuristic: 0
-    };
+function initializeHeuristics(grid) {
+    for (const row of grid) {
+        for (const node of row) {
+            node.heuristics = {
+                // gScore[n] is the cost of the cheapest path from start to n currently known.
+                gScore: 0,
+                // fScore[n] represents our current best guess as to how short a path from start to finish can be if it goes through n.
+                fScore: 0,
+                // heuristic(n) estimates the cost to reach goal from node n.
+                heuristic: 0
+            };
+        }
+    }
 }
 
-function heuristic(nodeA, nodeB) {
-    // if x = (a, b) and y = (c, d), heuristic = |a − c| + |b − d|.
-    return (nodeA.x - nodeB.x) + (nodeA.y - nodeB.y);
+function heuristic(nodeX, nodeY) {
+    // If x = (a, b) and y = (c, d), heuristic = sqrt(|a − c| ^ 2 + |b − d| ^ 2).
+    const a = nodeX.x - nodeY.x;
+    const b = nodeX.y - nodeY.y;
+
+    return Math.sqrt(a ** 2 + b ** 2);
 }
 
 function getUnvisitedNeighbors(node, grid) {
@@ -93,7 +115,7 @@ function getUnvisitedNeighbors(node, grid) {
 function getWinner(nodes) {
     let winner = 0;
 
-    for (var i = 0; i < nodes.length; i++) {
+    for (let i = 0; i < nodes.length; i++) {
         if (nodes[i].heuristics.fScore < nodes[winner].heuristics.fScore) {
             winner = i;
         }
@@ -106,15 +128,10 @@ function isSameNode(nodeA, nodeB) {
     return nodeA.x == nodeB.x && nodeA.y == nodeB.y;
 }
 
-// This function is necessary for this Angular implementation,
-// otherwise when we return the node list the final state is 
-// visualized instantly and therefore no animation is possible.
-// https://angular.io/guide/architecture#templates-directives-and-data-binding
-function uncheckAllNodes(nodes) {
-    nodes.forEach(node => {
-        if (!node.isStart) {
-            node.hasBeenChecked = false;
-            node.distance = Infinity;
+function removeFromArray(array, element) {
+    for (let i = array.length - 1; i >= 0; i--) {
+        if (array[i] == element) {
+            array.splice(i, 1);
         }
-    });
+    }
 }

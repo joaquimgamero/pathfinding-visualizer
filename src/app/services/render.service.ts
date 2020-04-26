@@ -9,7 +9,7 @@ import { AlgorithmsService } from './algorithms.service';
   providedIn: 'root'
 })
 export class RenderService {
-  public lastAlgorithmExecution: AlgorithmResponse;
+  // public lastAlgorithmExecution: AlgorithmResponse;
   public renderInProgress: boolean;
 
   constructor(private gridService: GridService, private algorithmsService: AlgorithmsService) { }
@@ -27,8 +27,8 @@ export class RenderService {
       });
     }
 
-    if (this.lastAlgorithmExecution.objectiveFound) {
-      this.renderRoute(this.lastAlgorithmExecution.nodesInShortestPathOrder);
+    if (this.algorithmsService.lastAlgorithmResponse.objectiveFound) {
+      this.renderRoute(this.algorithmsService.lastAlgorithmResponse.nodesInShortestPathOrder);
     }
 
     this.renderInProgress = false;
@@ -52,10 +52,9 @@ export class RenderService {
     this.renderInProgress = true;
 
     this.removeRouteAndCheckedNodes();
+    this.algorithmsService.computeAlgorithm(this.gridService.grid, this.gridService.startNode, this.gridService.finishNode, algorithmType);
 
-    this.lastAlgorithmExecution =
-      this.algorithmsService.computeAlgorithm(this.gridService.grid, this.gridService.startNode, this.gridService.finishNode, algorithmType);
-    this.renderAlgorithm(this.lastAlgorithmExecution.checkedNodes, algorithmType);
+    this.renderAlgorithm(this.algorithmsService.lastAlgorithmResponse.checkedNodes, algorithmType);
   }
 
   private removeRouteAndCheckedNodes() {
