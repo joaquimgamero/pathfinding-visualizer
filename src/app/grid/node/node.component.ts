@@ -21,14 +21,22 @@ export class NodeComponent implements OnInit {
   }
 
   public onMouseOver(nodeType: NodeType) {
+    if (nodeType == NodeType.Empty) {
+      nodeType = NodeType.Obstacle;
+    }
+
+    if (!this.gridService.mouseIsBeingPressed) {
+      this.renderService.lastMouseOverNodeType = nodeType;
+    }
+
     if (this.gridService.mouseIsBeingPressed) {
-      this.onChangeState(nodeType);
+      this.onChangeState();
     }
   }
 
-  public onChangeState(nodeType: NodeType) {
+  public onChangeState() {
     if (!this.renderService.renderInProgress) {
-      this.node.toggleType(nodeType);
+      this.node.toggleType(this.renderService.lastMouseOverNodeType);
     }
   }
 

@@ -4,12 +4,13 @@ import { AlgorithmType } from '../enums/algorithmType.enum';
 import { Node } from '../models/node';
 import { AlgorithmResponse } from '../models/algorithm-response';
 import { AlgorithmsService } from './algorithms.service';
+import { NodeType } from '../enums/nodeType.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RenderService {
-  // public lastAlgorithmExecution: AlgorithmResponse;
+  public lastMouseOverNodeType: NodeType;
   public renderInProgress: boolean;
 
   constructor(private gridService: GridService, private algorithmsService: AlgorithmsService) { }

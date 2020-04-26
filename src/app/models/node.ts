@@ -1,4 +1,5 @@
 import { NodeType } from '../enums/nodeType.enum'
+import { GridService } from '../services/grid.service';
 
 export class Node {
     public x: number;
@@ -9,7 +10,7 @@ export class Node {
     public previousNode: Node;
     public isRoute: boolean;
 
-    constructor(x: number, y: number) {
+    constructor(x: number, y: number, private gridService: GridService) {
         this.x = x;
         this.y = y;
         this.type = NodeType.Empty;
@@ -47,6 +48,8 @@ export class Node {
     }
 
     public toggleType(nodeType: NodeType) {
+        if (this.isLegendNode) { return false; }
+
         switch (nodeType) {
             case NodeType.Obstacle:
                 if (this.type != NodeType.Start && this.type != NodeType.Finish) {
@@ -54,10 +57,14 @@ export class Node {
                 }
                 break;
             case NodeType.Start:
-                this.type = NodeType.Start;
+                this.gridService.createStartNode(this.x, this.y);
                 break;
             case NodeType.Finish:
+                this.gridService.createFinishNode(this.x, this.y);
                 this.type = NodeType.Finish;
+                break;
+            case NodeType.Empty:
+                this.type = NodeType.Empty;
                 break;
             default:
                 break;

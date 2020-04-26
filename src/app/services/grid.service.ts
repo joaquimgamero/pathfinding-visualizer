@@ -32,7 +32,7 @@ export class GridService {
     for (let i = 0; i < height; i++) {
       this.grid[i] = new Array(width);
       for (let j = 0; j < width; j++) {
-        this.grid[i][j] = new Node(i + 1, j + 1);
+        this.grid[i][j] = new Node(i + 1, j + 1, this);
       }
     }
 

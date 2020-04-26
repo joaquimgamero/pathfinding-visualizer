@@ -1,5 +1,4 @@
-<div (click)="logInfo()" (mouseover)="onMouseOver(nodeType.Obstacle)" (mousedown)="onChangeState(nodeType.Obstacle)"
-    class="node"
+<div (click)="logInfo()" (mouseover)="onMouseOver(node.type)" (mousedown)="onChangeState()" class="node"
     [ngClass]="{ 'start-node' : node.isStart, 'end-node' : node.isFinish, 'has-been-checked' : node.markAsChecked, 'route' : node.isRoute,
     'obstacle' : node.isObstacle, 'border-color-obstacle' : node.isObstacle, 'border-color-grid' : !node.isObstacle, 'node-border' : !node.isLegendNode }">
     <!-- {{node.x}}, {{node.y}} -->
