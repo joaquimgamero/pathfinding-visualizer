@@ -26,6 +26,7 @@
 .button-visualize {
     color: yellow;
     background-color: #ff4081;
+    width: 7vw;
 }
 
 .button-reset {
