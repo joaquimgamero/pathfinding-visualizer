@@ -3,6 +3,7 @@ import { AlgorithmType } from '../enums/algorithmType.enum';
 import { GridService } from '../services/grid.service';
 import { RenderService } from '../services/render.service';
 import { Maze } from '../enums/mazes.enum';
+import { AlgorithmsService } from '../services/algorithms.service';
 
 @Component({
   selector: 'header',
@@ -17,7 +18,7 @@ export class HeaderComponent implements OnInit {
   allAlgorithms = [];
   allMazes = [];
 
-  constructor(private gridService: GridService, private renderService: RenderService) { }
+  constructor(private gridService: GridService, private renderService: RenderService, private algorithmService: AlgorithmsService) { }
 
   ngOnInit(): void {
     this.allAlgorithms = Object.values(AlgorithmType);
@@ -27,7 +28,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public onClearAndReset() {
-    this.renderService.lastAlgorithmExecution = null;
+    this.algorithmService.lastAlgorithmResponse = null;
     this.gridService.clearAndReset();
   }
 
