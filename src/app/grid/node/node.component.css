@@ -1,9 +1,8 @@
 .node {
-    width: 1.3vw;
-    height: 1.3vw;
+    width: 2.5vh;
+    height: 2.5vh;
     float: left;
     font-size: 5px;
-    /* padding: 1px; */
     -webkit-transition: background-color 250ms linear;
     -ms-transition: background-color 250ms linear;
     transition: background-color 250ms linear;

@@ -5,6 +5,7 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     background-color: #541eff;
+    overflow: hidden;
 }
 
 a {
@@ -78,7 +79,7 @@ mat-form-field span.mat-form-field-label-wrapper label {
     height: 0.35vw;
     border: solid royalblue;
     border-width: 0 0.25vw 0.25vw 0;
-    margin-left: 0.05vw;
+    /* margin-left: 0.05vw; */
     margin-top: 0.18vw;
     padding: 0.15vw;
 }

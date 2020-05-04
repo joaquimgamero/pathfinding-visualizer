@@ -57,11 +57,16 @@ export class Node {
                 }
                 break;
             case NodeType.Start:
-                this.gridService.createStartNode(this.x, this.y);
+                if (this.type != NodeType.Finish) {
+                    this.gridService.createStartNode(this.x, this.y);
+                    this.type = NodeType.Start;
+                }
                 break;
             case NodeType.Finish:
-                this.gridService.createFinishNode(this.x, this.y);
-                this.type = NodeType.Finish;
+                if (this.type != NodeType.Start) {
+                    this.gridService.createFinishNode(this.x, this.y);
+                    this.type = NodeType.Finish;
+                }
                 break;
             case NodeType.Empty:
                 this.type = NodeType.Empty;
