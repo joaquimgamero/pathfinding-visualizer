@@ -3,13 +3,45 @@ export function computeBreadthFirst(grid, startNode, finishNode) {
         return false;
     }
 
-    const checkedNodes = [];
-    const uncheckedNodes = getAllNodes(grid);
     startNode.hasBeenChecked = true;
+    const checkedNodes = [];
+    // const uncheckedNodes = getAllNodes(grid);
+    const uncheckedNodes = [startNode];
+
+    let counter = 0;
 
     // Check all unvisited nodes
-    while (Array.isArray(uncheckedNodes) && uncheckedNodes.length) {
+    while ((Array.isArray(uncheckedNodes) && uncheckedNodes.length) && counter < 10000) {
+        console.log(uncheckedNodes);
+        const currentNode = uncheckedNodes.shift();
 
+        // If we find and obstacle we skip it
+        if (currentNode.isObstacle) {
+            continue;
+        }
+
+        // If the closest node is at a distance of infinity,
+        // we must be trapped and should therefore stop.
+        // if (closestNode.distance === Infinity) {
+        //     return checkedNodes;
+        // }
+
+        currentNode.hasBeenChecked = true;
+        checkedNodes.push(currentNode);
+
+        if (isSameNode(currentNode, finishNode)) {
+            return checkedNodes;
+        }
+
+        const currentNeighbors = getUnvisitedNeighbors(currentNode, grid);
+
+        for (const neighbor of currentNeighbors) {
+            neighbor.previousNode = currentNode;
+            neighbor.hasBeenChecked = true;
+            uncheckedNodes.push(neighbor);
+        }
+
+        counter++;
     }
 }
 

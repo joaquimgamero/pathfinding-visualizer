@@ -4,6 +4,8 @@ import { computeDijkstra } from '../algorithms/dijkstra';
 import { getDijkstraShortestPath } from '../algorithms/dijkstra';
 import { computeAstar } from '../algorithms/a-star';
 import { getAstarShortestPath } from '../algorithms/a-star';
+import { computeBreadthFirst } from '../algorithms/breadth-first.js';
+import { getBreadthFirstShortestPath } from '../algorithms/breadth-first.js';
 import { AlgorithmType } from '../enums/algorithmType.enum';
 import { AlgorithmResponse } from '../models/algorithm-response';
 
@@ -25,9 +27,12 @@ export class AlgorithmsService {
       case AlgorithmType.Astar:
         scannedNodesInOrder = computeAstar(grid, startNode, finishNode);
         break;
+      case AlgorithmType.BFS:
+        scannedNodesInOrder = computeBreadthFirst(grid, startNode, finishNode);
+        break;
     }
 
-    this.uncheckAllNodes(scannedNodesInOrder);
+    this.uncheckAllNodes(grid);
     const path = this.getShortestPath(finishNode, algorithmType);
     this.lastAlgorithmResponse = new AlgorithmResponse(scannedNodesInOrder, path, algorithmType);
 
@@ -40,6 +45,8 @@ export class AlgorithmsService {
         return getDijkstraShortestPath(finishNode);
       case AlgorithmType.Astar:
         return getAstarShortestPath(finishNode);
+      case AlgorithmType.BFS:
+        return getBreadthFirstShortestPath(finishNode);
     }
   }
 
@@ -47,12 +54,14 @@ export class AlgorithmsService {
   // otherwise when we return the node list the final state is 
   // visualized instantly and therefore no animation is possible.
   // https://angular.io/guide/architecture#templates-directives-and-data-binding
-  private uncheckAllNodes(nodes: Array<Node>) {
-    nodes.forEach(node => {
-      if (!node.isStart) {
-        node.hasBeenChecked = false;
-        node.distance = Infinity;
-      }
+  private uncheckAllNodes(grid: Array<Array<Node>>) {
+    grid.forEach(row => {
+      row.forEach(node => {
+        if (!node.isStart) {
+          node.hasBeenChecked = false;
+          node.distance = Infinity;
+        }
+      });
     });
   }
 }

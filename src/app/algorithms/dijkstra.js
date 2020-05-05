@@ -10,7 +10,7 @@ export function computeDijkstra(grid, startNode, finishNode) {
     // Check all unvisited nodes
     while (Array.isArray(uncheckedNodes) && uncheckedNodes.length) {
         sortNodesByDistance(uncheckedNodes);
-        const closestNode = uncheckedNodes.shift()
+        const closestNode = uncheckedNodes.shift();
 
         // If we find and obstacle we skip it
         if (closestNode.isObstacle) {
