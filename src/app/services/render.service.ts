@@ -33,6 +33,8 @@ export class RenderService {
     }
 
     this.renderInProgress = false;
+
+    console.log(this.gridService.convertGridToJson());
   }
 
   public async renderRoute(shortestPath: Array<Node>) {

@@ -145,7 +145,7 @@ export class GridService {
     }
   }
 
-  private convertGridToJson() {
+  public convertGridToJson() {
     const json = [];
 
     this.grid.forEach(row => {
