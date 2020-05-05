@@ -4,7 +4,8 @@
 
         <mat-form-field class="algorithm-select">
             <mat-label>Algorithm</mat-label>
-            <mat-select [disabled]="renderInProgress" [(ngModel)]="selectedAlgorithm" name="algorithm-select">
+            <mat-select [disabled]="renderInProgress" [(ngModel)]="selectedAlgorithm"
+                (valueChange)="onSelectAlgorithm($event)" name="algorithm-select">
                 <mat-option *ngFor="let algorithm of allAlgorithms" [value]="algorithm">
                     {{ algorithm }}
                 </mat-option>

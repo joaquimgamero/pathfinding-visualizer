@@ -22,8 +22,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.allAlgorithms = Object.values(AlgorithmType);
+    this.algorithmService.selectedAlgorithm = AlgorithmType.Dijkstra;
     this.selectedAlgorithm = AlgorithmType.Dijkstra;
-
     this.allMazes = Object.values(Maze);
   }
 
@@ -47,6 +47,11 @@ export class HeaderComponent implements OnInit {
   public onVisualizeAlgorithm() {
     this.gridService.resetDistances();
     this.renderService.visualizeAlgorithm(this.selectedAlgorithm);
+  }
+
+  public onSelectAlgorithm(newAlgorithm: AlgorithmType) {
+    this.algorithmService.selectedAlgorithm = newAlgorithm;
+    this.selectedAlgorithm = newAlgorithm;
   }
 
   public get renderInProgress(): boolean {

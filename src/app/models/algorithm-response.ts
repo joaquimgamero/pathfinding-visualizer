@@ -9,7 +9,7 @@ export class AlgorithmResponse {
 
     constructor(checkedNodes: Array<Node>, path: Array<Node>, type: AlgorithmType) {
         this.checkedNodes = checkedNodes;
-        this.objectiveFound = checkedNodes.some((node: Node) => node.isFinish);
+        this.objectiveFound = checkedNodes && checkedNodes.some((node: Node) => node.isFinish);
         this.nodesInShortestPathOrder = path;
         this.type = type;
     }

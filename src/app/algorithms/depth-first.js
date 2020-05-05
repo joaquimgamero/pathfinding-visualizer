@@ -1,4 +1,4 @@
-export function computeBreadthFirst(grid, startNode, finishNode) {
+export function computeDepthFirst(grid, startNode, finishNode) {
     if (!grid || !startNode || !finishNode || isSameNode(startNode, finishNode)) {
         return false;
     }
@@ -9,7 +9,7 @@ export function computeBreadthFirst(grid, startNode, finishNode) {
 
     // Check all unvisited nodes
     while (Array.isArray(uncheckedNodes) && uncheckedNodes.length) {
-        const currentNode = uncheckedNodes.shift();
+        const currentNode = uncheckedNodes.pop();
 
         // If we find and obstacle we skip it
         if (currentNode.isObstacle) {
@@ -27,7 +27,6 @@ export function computeBreadthFirst(grid, startNode, finishNode) {
 
         for (const neighbor of currentNeighbors) {
             neighbor.previousNode = currentNode;
-            neighbor.hasBeenChecked = true;
             uncheckedNodes.push(neighbor);
         }
     }
@@ -35,7 +34,7 @@ export function computeBreadthFirst(grid, startNode, finishNode) {
     return checkedNodes;
 }
 
-export function getBreadthFirstShortestPath(finishNode) {
+export function getDepthFirstShortestPath(finishNode) {
     const nodesInShortestPathOrder = [];
     let currentNode = finishNode;
 

@@ -6,6 +6,8 @@ import { computeAstar } from '../algorithms/a-star';
 import { getAstarShortestPath } from '../algorithms/a-star';
 import { computeBreadthFirst } from '../algorithms/breadth-first.js';
 import { getBreadthFirstShortestPath } from '../algorithms/breadth-first.js';
+import { computeDepthFirst } from '../algorithms/depth-first.js';
+import { getDepthFirstShortestPath } from '../algorithms/depth-first.js';
 import { AlgorithmType } from '../enums/algorithmType.enum';
 import { AlgorithmResponse } from '../models/algorithm-response';
 
@@ -14,6 +16,7 @@ import { AlgorithmResponse } from '../models/algorithm-response';
 })
 export class AlgorithmsService {
   lastAlgorithmResponse: AlgorithmResponse;
+  selectedAlgorithm: AlgorithmType;
 
   constructor() { }
 
@@ -29,6 +32,9 @@ export class AlgorithmsService {
         break;
       case AlgorithmType.BFS:
         scannedNodesInOrder = computeBreadthFirst(grid, startNode, finishNode);
+        break;
+      case AlgorithmType.DFS:
+        scannedNodesInOrder = computeDepthFirst(grid, startNode, finishNode);
         break;
     }
 
@@ -47,6 +53,8 @@ export class AlgorithmsService {
         return getAstarShortestPath(finishNode);
       case AlgorithmType.BFS:
         return getBreadthFirstShortestPath(finishNode);
+      case AlgorithmType.DFS:
+        return getDepthFirstShortestPath(finishNode);
     }
   }
 
