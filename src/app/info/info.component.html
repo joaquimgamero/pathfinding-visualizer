@@ -1,11 +1,14 @@
 <div *ngIf="canDisplayInfo; else waiting" class="info">
     <ng-container *ngIf="objectiveFound; else notFound">
         <div>
-            🌌 Weapon of choice:<span class="algorithm-type">{{ algorithmType }}</span>
+            <span>🌌 Weapon of choice:</span>
+            <span class="algorithm-type">{{ algorithmType }}</span>
         </div>
         <div>
-            🎠 Scanned nodes: <span class="scanned-nodes">{{ scannedNodes }}</span> 🎯 Shortest path length:
-            <span class="shortest-path">{{ pathLength }}</span>.
+            <span>🎠 Scanned nodes:</span>
+            <span class="scanned-nodes">{{ scannedNodes }}</span>
+            <span>🎯 Shortest path length:</span>
+            <span class="shortest-path">{{ pathLength }}</span>
         </div>
     </ng-container>
     <ng-template #notFound>

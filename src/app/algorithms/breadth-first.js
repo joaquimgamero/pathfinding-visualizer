@@ -1,40 +1,51 @@
-export function computeDijkstra(grid, startNode, finishNode) {
+export function computeBreadthFirst(grid, startNode, finishNode) {
     if (!grid || !startNode || !finishNode || isSameNode(startNode, finishNode)) {
         return false;
     }
 
-    const checkedNodes = [];
-    const uncheckedNodes = getAllNodes(grid);
     startNode.hasBeenChecked = true;
+    const checkedNodes = [];
+    // const uncheckedNodes = getAllNodes(grid);
+    const uncheckedNodes = [startNode];
+
+    let counter = 0;
 
     // Check all unvisited nodes
-    while (Array.isArray(uncheckedNodes) && uncheckedNodes.length) {
-        sortNodesByDistance(uncheckedNodes);
-        const closestNode = uncheckedNodes.shift();
+    while ((Array.isArray(uncheckedNodes) && uncheckedNodes.length) && counter < 10000) {
+        console.log(uncheckedNodes);
+        const currentNode = uncheckedNodes.shift();
 
         // If we find and obstacle we skip it
-        if (closestNode.isObstacle) {
+        if (currentNode.isObstacle) {
             continue;
         }
 
         // If the closest node is at a distance of infinity,
         // we must be trapped and should therefore stop.
-        if (closestNode.distance === Infinity) {
+        // if (closestNode.distance === Infinity) {
+        //     return checkedNodes;
+        // }
+
+        currentNode.hasBeenChecked = true;
+        checkedNodes.push(currentNode);
+
+        if (isSameNode(currentNode, finishNode)) {
             return checkedNodes;
         }
 
-        closestNode.hasBeenChecked = true;
-        checkedNodes.push(closestNode);
+        const currentNeighbors = getUnvisitedNeighbors(currentNode, grid);
 
-        if (isSameNode(closestNode, finishNode)) {
-            return checkedNodes;
+        for (const neighbor of currentNeighbors) {
+            neighbor.previousNode = currentNode;
+            neighbor.hasBeenChecked = true;
+            uncheckedNodes.push(neighbor);
         }
 
-        updateUnvisitedNeighbors(closestNode, grid);
+        counter++;
     }
 }
 
-export function getDijkstraShortestPath(finishNode) {
+export function getBreadthFirstShortestPath(finishNode) {
     const nodesInShortestPathOrder = [];
     let currentNode = finishNode;
 
@@ -56,19 +67,6 @@ function getAllNodes(grid) {
     }
 
     return nodes;
-}
-
-function sortNodesByDistance(uncheckedNodes) {
-    uncheckedNodes.sort((nodeA, nodeB) => nodeA.distance - nodeB.distance);
-}
-
-function updateUnvisitedNeighbors(node, grid) {
-    const unvisitedNeighbors = getUnvisitedNeighbors(node, grid);
-
-    for (const neighbor of unvisitedNeighbors) {
-        neighbor.distance = node.distance + 1;
-        neighbor.previousNode = node;
-    }
 }
 
 function getUnvisitedNeighbors(node, grid) {

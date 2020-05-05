@@ -16,6 +16,7 @@
     background-color: paleturquoise;
     color: black;
     margin: 0.3vw;
+    margin-right: 1.3vw;
     font-family: monospace;
 }
 
@@ -36,5 +37,6 @@
     background-color: black;
     color: white;
     margin: 0.3vw;
+    margin-right: 1.3vw;
     font-family: monospace;
 }
