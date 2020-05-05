@@ -35,7 +35,7 @@ export class LegendComponent implements OnInit {
       case AlgorithmType.BFS:
         return "Breadth-first search starts by searching a start node, followed by its adjacent nodes, then all nodes that can be reached by a path from the start node containing two edges, three edges, and so on.";
       case AlgorithmType.DFS:
-        return "The main strategy of depth-first search is to explore deeper into the graph whenever possible. If it is known that an answer will likely be found far into a tree, DFS is a better option than BFS. DFS does not gaurantee an optimal solution."
+        return "The main strategy of DFS is to explore deeper into the graph whenever possible. If it is known that an answer will likely be found far into a tree, DFS is a better option than BFS. DFS does not gaurantee an optimal solution."
     }
   }
 

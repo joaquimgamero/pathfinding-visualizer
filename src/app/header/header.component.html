@@ -14,7 +14,8 @@
 
         <mat-form-field class="algorithm-select">
             <mat-label>Mazes</mat-label>
-            <mat-select [disabled]="renderInProgress" [(ngModel)]="selectedMaze" name="algorithm-select">
+            <mat-select [disabled]="renderInProgress" [(ngModel)]="selectedMaze" (valueChange)="onSelectMaze($event)"
+                name="algorithm-select">
                 <mat-option *ngFor="let maze of allMazes; index as i" [value]="maze">
                     {{ maze }}
                 </mat-option>

@@ -4,6 +4,8 @@ import { NodeType } from '../enums/nodeType.enum'
 import { AlgorithmsService } from './algorithms.service';
 import { AlgorithmType } from '../enums/algorithmType.enum';
 import { RenderService } from './render.service';
+import { Maze } from '../enums/mazes.enum';
+import * as summerOfLove from '../mazes/summer-of-love.json';
 
 @Injectable({
   providedIn: 'root'
@@ -126,5 +128,72 @@ export class GridService {
         node.reset();
       });
     });
+  }
+
+  public applyMaze(maze: string) {
+    switch (maze) {
+      case "greek":
+        console.log("applying greek!");
+        break;
+      case "love":
+        console.log("applying love!");
+        this.parseMaze(summerOfLove);
+        break;
+      case "snake":
+        console.log("applying snake!");
+        break;
+    }
+  }
+
+  private convertGridToJson() {
+    const json = [];
+
+    this.grid.forEach(row => {
+      let currentRow = [];
+      row.forEach(node => {
+        if (node.isStart) {
+          currentRow.push("s");
+        }
+        else if (node.isFinish) {
+          currentRow.push("f");
+        }
+        else if (node.isObstacle) {
+          currentRow.push("o");
+        }
+        else {
+          currentRow.push("e");
+        }
+      });
+
+      json.push(currentRow);
+    });
+
+    return JSON.stringify(json);
+  }
+
+  private parseMaze(maze: any) {
+    maze = maze.default;
+    this.clearGrid();
+
+    for (let i = 0; i < maze.length; i++) {
+
+      for (let j = 0; j < maze[0].length; j++) {
+        let currentNode = this.grid[i][j];
+
+        switch (maze[i][j]) {
+          case "e":
+            break;
+          case "o":
+            currentNode.toggleType(NodeType.Obstacle);
+            break;
+          case "s":
+            currentNode.toggleType(NodeType.Start);
+            break;
+          case "f":
+            currentNode.toggleType(NodeType.Finish);
+            break;
+        }
+      }
+    }
   }
 }
