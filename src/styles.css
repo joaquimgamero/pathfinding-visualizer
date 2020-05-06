@@ -41,11 +41,11 @@ button {
 }
 
 mat-form-field.mat-form-field {
-    color:white;
+    color:white !important;
 }
 
 .mat-select-value {
-    color: white;
+    color: white !important;
 }
 
 /* Ripple, focused */
