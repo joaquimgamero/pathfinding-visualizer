@@ -2,17 +2,19 @@ import { Injectable } from '@angular/core';
 import { Node } from '../models/node';
 import { NodeType } from '../enums/nodeType.enum'
 import { AlgorithmsService } from './algorithms.service';
-import { AlgorithmType } from '../enums/algorithmType.enum';
-import { RenderService } from './render.service';
+import * as summerOfLove from '../mazes/summer-of-love.json';
+import * as classicGreek from '../mazes/classic-greek.json';
+import * as snake from '../mazes/snake.json';
+import * as jacksonPollock from '../mazes/jackson-pollock.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GridService {
-  private readonly INITIAL_START_NODE_X = 10;
-  private readonly INITIAL_START_NODE_Y = 20;
-  private readonly INITIAL_END_NODE_X = 20;
-  private readonly INITIAL_END_NODE_Y = 30;
+  private readonly INITIAL_START_NODE_X = 13;
+  private readonly INITIAL_START_NODE_Y = 7;
+  private readonly INITIAL_END_NODE_X = 13;
+  private readonly INITIAL_END_NODE_Y = 59;
 
   public grid: Array<Array<Node>> = new Array<Array<Node>>();
   public mouseIsBeingPressed: boolean = false;
@@ -23,7 +25,7 @@ export class GridService {
   private currentStartNodePosition = { x: undefined, y: undefined };
   private currentFinishNodePosition = { x: undefined, y: undefined };
 
-  constructor(private algorithmsService: AlgorithmsService) { }
+  constructor() { }
 
   public initializeGrid(width: number, height: number) {
     this.width = width;
@@ -126,5 +128,50 @@ export class GridService {
         node.reset();
       });
     });
+  }
+
+  public applyMaze(maze: string) {
+    switch (maze) {
+      case "greek":
+        this.parseMaze(classicGreek);
+        break;
+      case "love":
+        this.parseMaze(summerOfLove);
+        break;
+      case "snake":
+        this.parseMaze(snake);
+        break;
+      case "jackson":
+        this.parseMaze(jacksonPollock);
+        break;
+    }
+  }
+
+  private parseMaze(maze: any) {
+    // Load the default json value (whole module is passed as the argument)
+    maze = maze.default;
+
+    this.clearGrid();
+
+    for (let i = 0; i < maze.length; i++) {
+
+      for (let j = 0; j < maze[0].length; j++) {
+        let currentNode = this.grid[i][j];
+
+        switch (maze[i][j]) {
+          case "e":
+            break;
+          case "o":
+            currentNode.toggleType(NodeType.Obstacle);
+            break;
+          case "s":
+            currentNode.toggleType(NodeType.Start);
+            break;
+          case "f":
+            currentNode.toggleType(NodeType.Finish);
+            break;
+        }
+      }
+    }
   }
 }

@@ -41,4 +41,8 @@ export class InfoComponent implements OnInit {
   public get canDisplayInfo(): boolean {
     return this.algorithmService.lastAlgorithmResponse && !this.renderService.renderInProgress;
   }
+
+  public get rendering(): boolean {
+    return this.renderService.renderInProgress;
+  }
 }

@@ -54,6 +54,11 @@ export class HeaderComponent implements OnInit {
     this.selectedAlgorithm = newAlgorithm;
   }
 
+  public onSelectMaze(newMaze: Maze) {
+    const selectedMaze = Object.keys(Maze)[this.allMazes.indexOf(newMaze)];
+    this.gridService.applyMaze(selectedMaze);
+  }
+
   public get renderInProgress(): boolean {
     return this.renderService.renderInProgress;
   }

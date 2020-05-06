@@ -11,7 +11,7 @@ import { NodeType } from '../enums/nodeType.enum';
 })
 export class RenderService {
   public lastMouseOverNodeType: NodeType;
-  public renderInProgress: boolean;
+  public renderInProgress: boolean = false;
 
   constructor(private gridService: GridService, private algorithmsService: AlgorithmsService) { }
 
