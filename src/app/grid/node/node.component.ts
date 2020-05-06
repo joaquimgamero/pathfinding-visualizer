@@ -41,6 +41,7 @@ export class NodeComponent implements OnInit {
   }
 
   public logInfo() {
+    console.log(this.renderService.renderInProgress);
     console.log(this.node);
   }
 }

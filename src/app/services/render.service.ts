@@ -11,7 +11,7 @@ import { NodeType } from '../enums/nodeType.enum';
 })
 export class RenderService {
   public lastMouseOverNodeType: NodeType;
-  public renderInProgress: boolean;
+  public renderInProgress: boolean = false;
 
   constructor(private gridService: GridService, private algorithmsService: AlgorithmsService) { }
 
@@ -33,8 +33,6 @@ export class RenderService {
     }
 
     this.renderInProgress = false;
-
-    console.log(this.gridService.convertGridToJson());
   }
 
   public async renderRoute(shortestPath: Array<Node>) {

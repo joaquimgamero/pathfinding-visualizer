@@ -19,7 +19,14 @@
 </div>
 
 <ng-template #waiting>
-    <div class="info">
-        🌚
-    </div>
+    <ng-container *ngIf="!this.rendering; else scanning">
+        <div class="info">
+            🌚
+        </div>
+    </ng-container>
+    <ng-template #scanning>
+        <div class="info">
+            🕵️
+        </div>
+    </ng-template>
 </ng-template>
