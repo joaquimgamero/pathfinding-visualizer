@@ -8,14 +8,18 @@ body {
 }
 
 a {
-    background: deeppink;
-    background: -webkit-linear-gradient(deeppink, orange , yellow);
-    background: -o-linear-gradient(right, deeppink, orange , yellow);
-    background: -moz-linear-gradient(right, deeppink, orange , yellow);
-    background: linear-gradient(to right, deeppink, orange , yellow);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #78dadb;
+    background-image: linear-gradient(120deg, deeppink 0%, deeppink 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.2em;
+    background-position: 0 88%;
+    transition: background-size 0.25s ease-in;
+    text-decoration: none;
+}
+
+a:hover {
+    background-size: 100% 88%;
+    color: yellow;
 }
 
 .red {
