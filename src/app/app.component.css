@@ -25,7 +25,8 @@
     background-color: #541eff;
     color: var(--main-text-color);
     padding: 10px;
-    font-size: 0.6vw;
+    margin-bottom: 10px;
+    font-size: 0.8vw;
     position: relative;
     left: 0;
     bottom: 0;
@@ -34,9 +35,6 @@
 }
 
 .info {
-    /* position: fixed; */
-    /* left: 0;
-    bottom: 0; */
     width: -webkit-fill-available;
 }
 
