@@ -1,6 +1,6 @@
 <!-- Rows -->
 <div (mousedown)="onToggleMouseState()" (mouseup)="onToggleMouseState()" (mouseleave)="onMouseLeave()"
-    (dragend)="onToggleMouseState()" class="grid-wrapper">
+    (dragend)="onToggleMouseState()" class="grid grid-wrapper">
     <div *ngFor="let node of [].constructor(height); let i = index" class="row">
         <node *ngFor="let node of getNodesInRow(i)" [node]="node"></node>
     </div>

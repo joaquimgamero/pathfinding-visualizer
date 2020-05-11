@@ -1,3 +1,14 @@
+.header {
+    background-color: #541eff;
+    color: var(--main-text-color);
+    padding: 10px;
+    height: 3vw;
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .title {
     margin-left: 1vw;
     margin-right: 2vw;
