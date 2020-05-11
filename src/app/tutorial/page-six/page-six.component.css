@@ -1,0 +1,12 @@
+.visualize {
+    background: deeppink;
+    color: yellow;
+    border-radius: 2px;
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.visualize-img {
+    margin-top: 50px;
+}

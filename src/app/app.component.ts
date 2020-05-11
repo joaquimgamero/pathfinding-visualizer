@@ -3,6 +3,8 @@ import { GridService } from './services/grid.service';
 import { AlgorithmType } from './enums/algorithmType.enum';
 import { RenderService } from './services/render.service';
 import { Title } from '@angular/platform-browser';
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
+import { TutorialComponent } from './tutorial/tutorial.component';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +14,11 @@ import { Title } from '@angular/platform-browser';
 export class AppComponent {
   title = 'Pathfinding Playground';
 
-  constructor(private titleService: Title, private gridService: GridService, private renderService: RenderService) { }
+  constructor(private titleService: Title, private gridService: GridService, private renderService: RenderService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.setTitle('Pathfiding Playground');
+    this.openTutorial();
   }
 
   public clearAndReset() {
@@ -29,5 +32,14 @@ export class AppComponent {
 
   private setTitle(newTitle: string) {
     this.titleService.setTitle(newTitle);
+  }
+
+  private openTutorial() {
+    this.dialog.open(TutorialComponent, {
+      height: '60vh',
+      width: '40vw',
+      disableClose: true,
+      autoFocus: true
+    });
   }
 }
