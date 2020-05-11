@@ -1,27 +1,42 @@
-# Pathfinding
+# Pathfinding Algorithms Visualizer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+This is a fun, 100% desktop oriented pathfinding algorithms visualizer and playground. A pathfinding algorithm seeks to find the shortest path between two points, just like any maps app would do.
 
-## Development server
+<img src="https://joaquimgamero.github.io/pathfinding-visualizer/assets/img/pathfinding-example.jpg" width="200">
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Different algorithms
 
-## Code scaffolding
+You can use the algorithm picker to try different algorithms. Note that some algorithms are unweighted, while others are weighted. Unweighted algorithms do not take turns or weight nodes into account, whereas weighted ones do.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<img src="https://joaquimgamero.github.io/pathfinding-visualizer/assets/img/pick-algorithm.gif" width="200">
 
-## Build
+Different pathfinding algorithms output different results, and the shortest path given may differ.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+* **Dijkstra** (weighted): the father of pathfinding algorithms; guarantees the shortest path.
+* **A*** (weighted): arguably the best pathfinding algorithm; uses heuristics to guarantee the shortest path much faster than Dijkstra's Algorithm.
+* **Breadth-first** (unweighted): a great algorithm; guarantees the shortest path.
+* **Depth-first** (unweighted): a very bad algorithm for pathfinding; does not guarantee the shortest path.
 
-## Running unit tests
+# Using the map 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+You can move the starting point (a blue arrow) and the finish point (the goal, a purple diamond) clicking and dragging on them.
 
-## Running end-to-end tests
+<img src="https://joaquimgamero.github.io/pathfinding-visualizer/assets/img/drag.gif" width="200">
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+You can also paint walls and obstacles in order to investigate how the different algorithms work and solve the problem. Just click down and move the cursor while holding the click button, like you would do in any image editor.
 
-## Further help
+<img src="https://joaquimgamero.github.io/pathfinding-visualizer/assets/img/paint.gif" width="200">
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+When you are ready, just click on the purple **Visualize!** button in the header, and the algorithm will start scanning the map, eventually finding the shortest path (a yellow line).
+
+<img src="https://joaquimgamero.github.io/pathfinding-visualizer/assets/img/visualize.gif" width="300">
+
+There are some presets for the map, called mazes. You can load them with the Mazes selector. They instantly provide a complete map designed for you to see the differences between different algorithms.
+
+<img src="https://joaquimgamero.github.io/pathfinding-visualizer/assets/img/maze.png" width="300">
+
+# Have fun!
+
+Enjoy this algorithm visualizer and have fun messing around. I built this during the COVID19 quarantine period, 2020. Feel free to hit me up if you want to talk about this project or any other fancy stuff!
+
+<img src="https://joaquimgamero.github.io/pathfinding-visualizer/assets/img/fun.webp" width="200">
