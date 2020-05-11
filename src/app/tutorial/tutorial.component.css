@@ -1,0 +1,14 @@
+.tutorial {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8vw;
+}
+  
+.spacer {
+    flex-grow: 1;
+}
+
+.skip-button {
+    margin-left: auto !important;
+}

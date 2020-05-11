@@ -1,0 +1,22 @@
+<div class="tutorial">
+    <!-- <h1 mat-dialog-title>Welcome!</h1> -->
+    <div mat-dialog-content>
+        <container-element [ngSwitch]="page">
+            <tutorial-page-one *ngSwitchCase="1"></tutorial-page-one>
+            <tutorial-page-two *ngSwitchCase="2"></tutorial-page-two>
+            <tutorial-page-three *ngSwitchCase="3"></tutorial-page-three>
+            <tutorial-page-four *ngSwitchCase="4"></tutorial-page-four>
+            <tutorial-page-five *ngSwitchCase="5"></tutorial-page-five>
+            <tutorial-page-six *ngSwitchCase="6"></tutorial-page-six>
+            <tutorial-page-seven *ngSwitchCase="7"></tutorial-page-seven>
+            <tutorial-page-eight *ngSwitchCase="8"></tutorial-page-eight>
+        </container-element>
+    </div>
+    <div class="spacer"></div>
+    <div mat-dialog-actions>
+        <button mat-raised-button (click)="onPreviousPage()" [disabled]="page <= 1">Back</button>
+        <button mat-raised-button (click)="onNextPage()" [disabled]="isLastPage" color="primary">Next
+            ({{ page }}/{{ maxPage }})</button>
+        <button mat-raised-button (click)="close()" color="warn" class="skip-button">{{ closeButtonText }}</button>
+    </div>
+</div>

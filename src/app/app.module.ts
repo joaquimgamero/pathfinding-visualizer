@@ -13,6 +13,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { LegendComponent } from './legend/legend.component';
 import { FooterComponent } from './footer/footer.component';
 import { InfoComponent } from './info/info.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { TutorialComponent } from './tutorial/tutorial.component';
+import { PageOneComponent } from './tutorial/page-one/page-one.component';
+import { PageTwoComponent } from './tutorial/page-two/page-two.component';
+import { PageThreeComponent } from './tutorial/page-three/page-three.component';
+import { PageFourComponent } from './tutorial/page-four/page-four.component';
+import { PageFiveComponent } from './tutorial/page-five/page-five.component';
+import { PageSixComponent } from './tutorial/page-six/page-six.component';
+import { PageSevenComponent } from './tutorial/page-seven/page-seven.component';
+import { PageEightComponent } from './tutorial/page-eight/page-eight.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +32,16 @@ import { InfoComponent } from './info/info.component';
     HeaderComponent,
     LegendComponent,
     FooterComponent,
-    InfoComponent
+    InfoComponent,
+    TutorialComponent,
+    PageOneComponent,
+    PageTwoComponent,
+    PageThreeComponent,
+    PageFourComponent,
+    PageFiveComponent,
+    PageSixComponent,
+    PageSevenComponent,
+    PageEightComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +50,11 @@ import { InfoComponent } from './info/info.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [GridService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [TutorialComponent]
 })
 export class AppModule { }
