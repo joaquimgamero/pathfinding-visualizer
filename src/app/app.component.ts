@@ -36,8 +36,8 @@ export class AppComponent {
 
   private openTutorial() {
     this.dialog.open(TutorialComponent, {
-      height: '60vh',
-      width: '40vw',
+      height: '70vh',
+      width: '50vw',
       disableClose: true,
       autoFocus: true
     });
