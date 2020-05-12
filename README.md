@@ -1,6 +1,6 @@
 # Pathfinding Algorithms Visualizer
 
-This is a fun, 100% desktop oriented pathfinding algorithms visualizer and playground. It's built on Angular 9 and deployed to <a href="https://joaquimgamero.github.io/pathfinding-visualizer/">joaquimgamero.github.io/pathfinding-visualizer</a>. A pathfinding algorithm seeks to find the shortest path between two points, just like any maps app would do. The purpose of this app is to see these algorithms in action and to observe the differences between them under two dimensional, customizable maps.
+This is a fun, 100% desktop oriented pathfinding algorithms visualizer and playground. It's built on Angular 9 and deployed to <a href="https://joaquimgamero.github.io/pathfinding-visualizer/">https://joaquimgamero.github.io/pathfinding-visualizer</a>. A pathfinding algorithm seeks to find the shortest path between two points, just like any maps app would do. The purpose of this app is to see these algorithms in action and to observe the differences between them under two dimensional, customizable maps.
 
 <img src="https://joaquimgamero.github.io/pathfinding-visualizer/assets/img/pathfinding-example.jpg" width="200">
 
